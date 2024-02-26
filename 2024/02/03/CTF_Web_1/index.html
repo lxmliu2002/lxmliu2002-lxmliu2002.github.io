@@ -1,0 +1,471 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CTF_Web_1 | lxmliu2002's blog</title><meta name="author" content="Xiuming Liu"><meta name="copyright" content="Xiuming Liu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="CTF 之 Web 学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CTF_Web_1">
+<meta property="og:url" content="http://example.com/2024/02/03/CTF_Web_1/index.html">
+<meta property="og:site_name" content="lxmliu2002&#39;s blog">
+<meta property="og:description" content="CTF 之 Web 学习">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png">
+<meta property="article:published_time" content="2024-02-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-26T09:28:05.058Z">
+<meta property="article:author" content="Xiuming Liu">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png"><link rel="shortcut icon" href="https://github.com/lxmliu2002/images/raw/main/favicon.ico"><link rel="canonical" href="http://example.com/2024/02/03/CTF_Web_1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CTF_Web_1',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-26 17:28:05'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://github.com/lxmliu2002/images/raw/main/lxmliu2002.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 文档</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png')"><nav id="nav"><span id="blog-info"><a href="/" title="lxmliu2002's blog"><span class="site-name">lxmliu2002's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 文档</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CTF_Web_1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-02T16:00:00.000Z" title="发表于 2024-02-03 00:00:00">2024-02-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-26T09:28:05.058Z" title="更新于 2024-02-26 17:28:05">2024-02-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/CTF/">CTF</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/CTF/Web/">Web</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CTF_Web_1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="ctf_web_1">CTF_Web_1</h1>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mb411R7LR">2023年我在B站学CTF</a></p>
+</blockquote>
+<h2 id="弱类型问题">弱类型问题</h2>
+<ul>
+<li>=== 先判断两种字符串的类型是否相同再比较</li>
+<li>== 先将字符串转化成相同再比较</li>
+</ul>
+<p>若比较一个数字和字符串或者比较涉及到数字内容的字符串，则字符串会被转换成数值且比较会按照数值进行。</p>
+<p>当一个字符串被当作一个数值来取值，其结果和类型如下：</p>
+<ul>
+<li>如果该字符串没有包含 '.'，'e'，'E'
+并且其数值在整形范围之内，其被当作 int 来取值，其他所有情况都被作为
+float 来取值。</li>
+<li>该字符串的开始部分决定了它的值，如果其以合法的数值开始，则使用该数值，否则其值为
+0
+<ul>
+<li>123admin =&gt; 123</li>
+<li>admin =&gt; 0</li>
+<li>12admin34 =&gt; 12</li>
+<li>1e123 != 1e234 ==&gt; e
+表示科学计数法，故这两个“字符串”实际上为数值</li>
+</ul></li>
+</ul>
+<h2 id="哈希md5绕过问题">哈希（MD5）绕过问题</h2>
+<p>登录时的哈希验证</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$</span><span class="language-bash">a != <span class="variable">$b</span></span></span><br><span class="line"><span class="meta prompt_">Md5($</span><span class="language-bash">a) == Md5(<span class="variable">$b</span>)</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45897324/article/details/108961503">0e
+开头的 md5</a></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$</span><span class="language-bash">a != <span class="variable">$b</span></span></span><br><span class="line"><span class="meta prompt_">Md5($</span><span class="language-bash">a) === Md5(<span class="variable">$b</span>)</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>null === null</p>
+<p>md5(array) -&gt; null</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">(string)$</span><span class="language-bash">a != (string)<span class="variable">$b</span></span></span><br><span class="line"><span class="meta prompt_">Md5($</span><span class="language-bash">a) === Md5(<span class="variable">$b</span>)</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Md5 碰撞</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c9089fd5b1ba">MD5
+碰撞的一些例子</a></p>
+</blockquote>
+<h2 id="变量覆盖问题">变量覆盖问题</h2>
+<p>用传参的值替换掉原有变量的值</p>
+<ul>
+<li>Ectract()
+<ul>
+<li>从数组中将变量导入到当前的符号表</li>
+</ul></li>
+<li>Parse_str()
+<ul>
+<li>将查询字符解析到变量中</li>
+</ul></li>
+</ul>
+<h2 id="命令执行漏洞">命令执行漏洞</h2>
+<p>命令执行是一种攻击，其目标是通过易受攻击的应用程序在主机操作系统上执行任意命令。当应用需要调用一些外部程序去处理内容的情况下，就会用到一些执行系统命令的函数，如
+PHP 中的
+system，exec，shell_exec等，当用户可以控制命令执行函数中的参数时，将可注入恶意系统命令注入到正常命令中，造成命令执行攻击。</p>
+<blockquote>
+<p>eg：cp /tmp/sourcefile /app/public/#{userinput}.jpg.</p>
+</blockquote>
+<p>一旦存在命令注入漏洞，攻击者就可以在目标系统执行任意命令，常用在向程序传入不安全参数（命令行参数、http
+头、cookie）。</p>
+<p>命令执行继承 Web Server
+用户的权限，包括写文件、写马、查看隐私信息、窃取源码、反弹 shell
+等。</p>
+<h3 id="漏洞位点">漏洞位点</h3>
+<ul>
+<li><p>程序过滤不严谨，导致用户可以将代码注入并执行。</p>
+<ul>
+<li>高危函数：eval()、assert()、preg_replace()、call_user_func() 等</li>
+</ul></li>
+<li><p>对于执行命令的函数，参数过滤不严谨，导致直接命令执行</p>
+<ul>
+<li><p>高危函数：system()、exec()、shell_exec()、passthru()、pctnl_exec()、popen()、proc_open()</p>
+<blockquote>
+<p>反引号是 shell_exec() 的别名</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<h2 id="联合执行">联合执行</h2>
+<h3 id="分号">分号</h3>
+<p>cmd1;cmd2;cmd3</p>
+<p>各自执行各自，前面执行成功与否不影响后面的执行</p>
+<h3 id="section">&amp;&amp;</h3>
+<p>cmd1&amp;&amp;cmd2&amp;&amp;cmd3</p>
+<p>当前面的命令执行成功时才执行后面的命令</p>
+<h3 id="section-1">||</h3>
+<p>cmd1||cmd2||cmd3</p>
+<p>当前面的命令执行失败时才执行后面的命令</p>
+<h3 id="section-2">|</h3>
+<p>cmd1|cmd2|cmd3</p>
+<p>前一个命令的结果作为后一个命令的参数</p>
+<blockquote>
+<p>eg：echo xxx | base64</p>
+</blockquote>
+<h3 id="换行符">换行符</h3>
+<p>%0a</p>
+<p>%0b</p>
+<h2 id="bypass">ByPass</h2>
+<h3 id="过滤空格">过滤空格</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$</span><span class="language-bash">IFS</span></span><br><span class="line"><span class="meta prompt_">$</span><span class="language-bash">{IFS}</span></span><br><span class="line">\$IFS\$9</span><br><span class="line">&lt;</span><br><span class="line">&lt;&gt;</span><br><span class="line">{cat,flag,php} // 用逗号实现空格的功能，使用{}括起来</span><br><span class="line"><span class="meta prompt_">%</span><span class="language-bash">20</span></span><br><span class="line"><span class="meta prompt_">%</span><span class="language-bash">09</span></span><br></pre></td></tr></table></figure>
+<h3 id="过滤某关键字">过滤某关键字</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ca \t y1n\g.php // 反斜线绕过</span><br><span class="line">cat y1''ng,php // 两个单引号绕过</span><br><span class="line">echo "Y2F0IHkxbmcucGhw" | base64 -d |bash // base64 编码绕过</span><br><span class="line">echo "6361742079316E672E706870" | xxd -r -p | bash // hex 编码绕过</span><br><span class="line">cat y1 [n] g.png // 用 [] 匹配</span><br><span class="line">cat y1n* // 用 * 匹配任意</span><br><span class="line">cat y1n?</span><br><span class="line">cat y1{a..z}g</span><br><span class="line">内联执行</span><br><span class="line">变量</span><br></pre></td></tr></table></figure>
+<h2 id="代码执行漏洞">代码执行漏洞</h2>
+<p>eval() 函数</p>
+<ul>
+<li>把字符串当作 php 代码去执行</li>
+</ul>
+<h2 id="无字母数字-rce">无字母数字 RCE</h2>
+<h3 id="苛刻条件-rce">苛刻条件 RCE</h3>
+<p>取反、异或的绕过方法</p>
+<h2 id="create_function">create_function</h2>
+<p>该函数有两个参数 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="6.62ex" height="2.161ex" role="img" focusable="false" viewBox="0 -750 2926 955"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path></g><g data-mml-node="mi" transform="translate(529,0)"><path data-c="1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(980,0)"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path></g><g data-mml-node="mi" transform="translate(1457,0)"><path data-c="1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></g><g data-mml-node="mi" transform="translate(1926,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">和</text></g></g></g></svg></mjx-container>code，用于创建一个 lambda 样式的函数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$code</span> = <span class="string">"return(<span class="subst">$a</span> + <span class="subst">$b</span>);}eval(<span class="subst">$_POST</span>['Y1ng']);//"</span>;</span><br><span class="line"><span class="variable">$f</span> = <span class="title function_ invoke__">create_function</span>(<span class="string">'$a, $b'</span>, <span class="variable">$code</span>);</span><br><span class="line">                |</span><br><span class="line">                v</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"><span class="variable">$a</span>, <span class="variable">$b</span></span>)</span>{</span><br><span class="line">  <span class="keyword">return</span> <span class="variable">$a</span> + <span class="variable">$b</span>;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">'Y1ng'</span>]);<span class="comment">//}</span></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Xiuming Liu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/02/03/CTF_Web_1/">http://example.com/2024/02/03/CTF_Web_1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">lxmliu2002's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CTF/">CTF</a><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/02/04/CTF_Web_2/" title="CTF_Web_2"><img class="cover" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">CTF_Web_2</div></div></a></div><div class="next-post pull-right"><a href="/2024/02/02/CTF_Crypto/" title="CTF_Crypto"><img class="cover" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CTF_Crypto</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/02/02/CTF_Crypto/" title="CTF_Crypto"><img class="cover" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-02</div><div class="title">CTF_Crypto</div></div></a></div><div><a href="/2024/01/31/CTF_Misc_1/" title="CTF_Misc_1"><img class="cover" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-31</div><div class="title">CTF_Misc_1</div></div></a></div><div><a href="/2024/02/01/CTF_Misc_2/" title="CTF_Misc_2"><img class="cover" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-01</div><div class="title">CTF_Misc_2</div></div></a></div><div><a href="/2024/02/04/CTF_Web_2/" title="CTF_Web_2"><img class="cover" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-04</div><div class="title">CTF_Web_2</div></div></a></div><div><a href="/2024/02/06/CTF_Web_3/" title="CTF_Web_3"><img class="cover" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-06</div><div class="title">CTF_Web_3</div></div></a></div><div><a href="/2024/02/07/CTF_Web_4/" title="CTF_Web_4"><img class="cover" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-07</div><div class="title">CTF_Web_4</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://github.com/lxmliu2002/images/raw/main/lxmliu2002.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Xiuming Liu</div><div class="author-info__description">Stay hungry, stay foolish.</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/lxmliu2002"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/lxmliu2002" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:lxmliu2002@gamil.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ctf_web_1"><span class="toc-number">1.</span> <span class="toc-text">CTF_Web_1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%B1%E7%B1%BB%E5%9E%8B%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">弱类型问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8Cmd5%E7%BB%95%E8%BF%87%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">哈希（MD5）绕过问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">变量覆盖问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.4.</span> <span class="toc-text">命令执行漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E4%BD%8D%E7%82%B9"><span class="toc-number">1.4.1.</span> <span class="toc-text">漏洞位点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E5%90%88%E6%89%A7%E8%A1%8C"><span class="toc-number">1.5.</span> <span class="toc-text">联合执行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%8F%B7"><span class="toc-number">1.5.1.</span> <span class="toc-text">分号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#section"><span class="toc-number">1.5.2.</span> <span class="toc-text">&amp;&amp;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#section-1"><span class="toc-number">1.5.3.</span> <span class="toc-text">||</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#section-2"><span class="toc-number">1.5.4.</span> <span class="toc-text">|</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8D%A2%E8%A1%8C%E7%AC%A6"><span class="toc-number">1.5.5.</span> <span class="toc-text">换行符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bypass"><span class="toc-number">1.6.</span> <span class="toc-text">ByPass</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E7%A9%BA%E6%A0%BC"><span class="toc-number">1.6.1.</span> <span class="toc-text">过滤空格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E6%9F%90%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.6.2.</span> <span class="toc-text">过滤某关键字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.7.</span> <span class="toc-text">代码执行漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%AD%97-rce"><span class="toc-number">1.8.</span> <span class="toc-text">无字母数字 RCE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8B%9B%E5%88%BB%E6%9D%A1%E4%BB%B6-rce"><span class="toc-number">1.8.1.</span> <span class="toc-text">苛刻条件 RCE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#create_function"><span class="toc-number">1.9.</span> <span class="toc-text">create_function</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/02/26/hello-world/" title="Hello World"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2024/02/26/hello-world/" title="Hello World">Hello World</a><time datetime="2024-02-26T09:28:05.061Z" title="发表于 2024-02-26 17:28:05">2024-02-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/23/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_3/" title="信息隐藏技术_3"><img src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-information_hiding.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息隐藏技术_3"/></a><div class="content"><a class="title" href="/2024/02/23/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_3/" title="信息隐藏技术_3">信息隐藏技术_3</a><time datetime="2024-02-22T16:00:00.000Z" title="发表于 2024-02-23 00:00:00">2024-02-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/22/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_2/" title="信息隐藏技术_2"><img src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-information_hiding.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息隐藏技术_2"/></a><div class="content"><a class="title" href="/2024/02/22/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_2/" title="信息隐藏技术_2">信息隐藏技术_2</a><time datetime="2024-02-21T16:00:00.000Z" title="发表于 2024-02-22 00:00:00">2024-02-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/21/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_1/" title="信息隐藏技术_1"><img src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-information_hiding.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息隐藏技术_1"/></a><div class="content"><a class="title" href="/2024/02/21/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_1/" title="信息隐藏技术_1">信息隐藏技术_1</a><time datetime="2024-02-20T16:00:00.000Z" title="发表于 2024-02-21 00:00:00">2024-02-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/16/heimdall%E2%80%94rs/" title="heimdall-rs"><img src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-04.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="heimdall-rs"/></a><div class="content"><a class="title" href="/2024/02/16/heimdall%E2%80%94rs/" title="heimdall-rs">heimdall-rs</a><time datetime="2024-02-15T16:00:00.000Z" title="发表于 2024-02-16 00:00:00">2024-02-16</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png')"><div id="footer-wrap"><div class="copyright">&copy;2024 By Xiuming Liu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = 'e2b04289e870b005374ee030148d64fd&s=rsv3';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.982279,28.19409';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><!-- hexo injector body_end end --></body></html>
