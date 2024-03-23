@@ -8443,7 +8443,7 @@ x(t)=\frac{1}{C_H}\iint \frac{1}{a^2}CWT_x(\tau,a)\frac{1}{\sqrt{\left|a \right|
       </tags>
   </entry>
   <entry>
-    <title></title>
+    <title>CTF_Pwn</title>
     <url>/2024/03/03/CTF_Pwn/</url>
     <content><![CDATA[<h1 id="ctf_pwn">CTF_Pwn</h1>
 <p><a href="https://www.bilibili.com/video/BV1854y1y7Ro/">XMCVE 2020 CTF
@@ -8565,6 +8565,15 @@ Pwn入门课程</a></p>
 <p>ROPgadget</p>
 <p>one_gadget</p>
 ]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>Linux</category>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>CTF</tag>
+        <tag>Linux</tag>
+      </tags>
   </entry>
   <entry>
     <title>PaperReading_Asm2Vec</title>
