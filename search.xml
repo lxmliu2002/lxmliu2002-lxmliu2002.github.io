@@ -9068,4 +9068,39 @@ Resnet11。二进制代码分类任务则是给定 CFG
         <tag>Vulnerability-Search</tag>
       </tags>
   </entry>
+  <entry>
+    <title>联邦学习_d1</title>
+    <url>/2024/07/15/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0_d1/</url>
+    <content><![CDATA[<h1 id="第-1-课数据可信流通从运维信任到技术信任">第 1
+课：数据可信流通：从运维信任到技术信任</h1>
+<p>建立数据来源可确认、使用范围可界定、流通过程可追溯、安全风险可防范的<strong>数据可信流通体系</strong></p>
+<p>信任的基石：</p>
+<ol type="1">
+<li>身份可确认</li>
+<li>利益可依赖</li>
+<li>能力有预期</li>
+<li>行为有后果</li>
+</ol>
+<p><img src="https://github.com/lxmliu2002/images/raw/main/post/20240715/image-20240715155837873.png" alt="image-20240715155837873" style="zoom: 33%;"></p>
+<ul>
+<li>内循环（传统数据安全的信任基础）：数据持有方在自己的运维安全域内对自己的数据使用和安全拥有全责</li>
+<li>外循环：责任主体不清，利益诉求不一致，能力参差不齐，责任链路难追溯</li>
+</ul>
+<p>技术信任：</p>
+<ol type="1">
+<li>可信数字应用身份</li>
+<li>使用权跨域管控：利益对齐的核心技术要求</li>
+<li>能力预期与不可能三角：安全要求，功能复杂度，单位成本</li>
+<li>全链路审计，闭环完成的数据可信流通体系</li>
+</ol>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>联邦学习</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>联邦学习</tag>
+      </tags>
+  </entry>
 </search>
