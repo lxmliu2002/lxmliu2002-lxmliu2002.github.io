@@ -9103,4 +9103,27 @@ Resnet11。二进制代码分类任务则是给定 CFG
         <tag>联邦学习</tag>
       </tags>
   </entry>
+  <entry>
+    <title>联邦学习_d1</title>
+    <url>/2024/07/15/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0_d2/</url>
+    <content><![CDATA[<h1 id="第-2-课隐私计算开源助力数据要素流通">第 2
+课：隐私计算开源助力数据要素流通</h1>
+<p>数据流转链路主要包括：采集、存储、加工、使用、提供、传输</p>
+<p>数据要素外循环是构建数据要素市场的核心</p>
+<p>从主体信任到技术信任，基于<strong>安全可信</strong>的技术信任体系是支撑全行业数据要素安全可控流转的基础。</p>
+<p>关键问题之一：数据权属</p>
+<ul>
+<li>控制面：以<strong>区块链、可信计算</strong>为核心支撑技术构建数据使用权跨域管控层</li>
+<li>数据面：以<strong>隐私计算</strong>为核心支撑技术构建密态数联网，包括密态枢纽与密态管道</li>
+</ul>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>联邦学习</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>联邦学习</tag>
+      </tags>
+  </entry>
 </search>
