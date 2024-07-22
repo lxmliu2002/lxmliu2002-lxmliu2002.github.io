@@ -9126,4 +9126,25 @@ Resnet11。二进制代码分类任务则是给定 CFG
         <tag>联邦学习</tag>
       </tags>
   </entry>
+  <entry>
+    <title>联邦学习_d3</title>
+    <url>/2024/07/22/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0_d3/</url>
+    <content><![CDATA[<h1 id="第-3-课隐语架构概览">第 3 课：隐语架构概览</h1>
+<p>混合编译调度：RayFed</p>
+<p>SPU</p>
+<p>HEU：同态加密库</p>
+<p>TEEU：可信执行环境</p>
+<p>YACL</p>
+<p>KUSCIA</p>
+<p>跨域管控——三权分置</p>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>联邦学习</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>联邦学习</tag>
+      </tags>
+  </entry>
 </search>
