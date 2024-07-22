@@ -9147,4 +9147,20 @@ Resnet11。二进制代码分类任务则是给定 CFG
         <tag>联邦学习</tag>
       </tags>
   </entry>
+  <entry>
+    <title>联邦学习_d4</title>
+    <url>/2024/07/22/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0_d4/</url>
+    <content><![CDATA[<h1 id="第-4-课secretflow-与-secretnote-的安装部署">第 4 课：SecretFlow
+与 Secretnote 的安装部署</h1>
+<p>按照文档指导安装即可。</p>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>联邦学习</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>联邦学习</tag>
+      </tags>
+  </entry>
 </search>
