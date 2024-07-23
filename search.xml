@@ -9163,4 +9163,194 @@ Resnet11。二进制代码分类任务则是给定 CFG
         <tag>联邦学习</tag>
       </tags>
   </entry>
+  <entry>
+    <title>数据分析_d1</title>
+    <url>/2024/07/23/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90_d1/</url>
+    <content><![CDATA[<h1 id="第-1-课数据可信流通从运维信任到技术信任">第 1
+课：数据可信流通：从运维信任到技术信任</h1>
+<p>建立数据来源可确认、使用范围可界定、流通过程可追溯、安全风险可防范的<strong>数据可信流通体系</strong></p>
+<p>信任的基石：</p>
+<ol type="1">
+<li>身份可确认</li>
+<li>利益可依赖</li>
+<li>能力有预期</li>
+<li>行为有后果</li>
+</ol>
+<p><img src="https://github.com/lxmliu2002/images/raw/main/post/20240715/image-20240715155837873.png" alt="image-20240715155837873" style="zoom: 33%;"></p>
+<ul>
+<li>内循环（传统数据安全的信任基础）：数据持有方在自己的运维安全域内对自己的数据使用和安全拥有全责</li>
+<li>外循环：责任主体不清，利益诉求不一致，能力参差不齐，责任链路难追溯</li>
+</ul>
+<p>技术信任：</p>
+<ol type="1">
+<li>可信数字应用身份</li>
+<li>使用权跨域管控：利益对齐的核心技术要求</li>
+<li>能力预期与不可能三角：安全要求，功能复杂度，单位成本</li>
+<li>全链路审计，闭环完成的数据可信流通体系</li>
+</ol>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据分析_d2</title>
+    <url>/2024/07/23/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90_d2/</url>
+    <content><![CDATA[<h1 id="第-2-课隐私计算开源助力数据要素流通">第 2
+课：隐私计算开源助力数据要素流通</h1>
+<p>数据流转链路主要包括：采集、存储、加工、使用、提供、传输</p>
+<p>数据要素外循环是构建数据要素市场的核心</p>
+<p>从主体信任到技术信任，基于<strong>安全可信</strong>的技术信任体系是支撑全行业数据要素安全可控流转的基础。</p>
+<p>关键问题之一：数据权属</p>
+<ul>
+<li>控制面：以<strong>区块链、可信计算</strong>为核心支撑技术构建数据使用权跨域管控层</li>
+<li>数据面：以<strong>隐私计算</strong>为核心支撑技术构建密态数联网，包括密态枢纽与密态管道</li>
+</ul>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据分析_d3</title>
+    <url>/2024/07/23/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90_d3/</url>
+    <content><![CDATA[<h1 id="第-3-课隐语架构概览">第 3 课：隐语架构概览</h1>
+<p>混合编译调度：RayFed</p>
+<p>SPU</p>
+<p>HEU：同态加密库</p>
+<p>TEEU：可信执行环境</p>
+<p>YACL</p>
+<p>KUSCIA</p>
+<p>跨域管控——三权分置</p>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据分析_d4</title>
+    <url>/2024/07/23/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90_d4/</url>
+    <content><![CDATA[<h1 id="第-4-课secretflow-与-secretnote-的安装部署">第 4 课：SecretFlow
+与 Secretnote 的安装部署</h1>
+<p>按照文档指导安装即可。</p>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习_d1</title>
+    <url>/2024/07/23/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_d1/</url>
+    <content><![CDATA[<h1 id="第-1-课数据可信流通从运维信任到技术信任">第 1
+课：数据可信流通：从运维信任到技术信任</h1>
+<p>建立数据来源可确认、使用范围可界定、流通过程可追溯、安全风险可防范的<strong>数据可信流通体系</strong></p>
+<p>信任的基石：</p>
+<ol type="1">
+<li>身份可确认</li>
+<li>利益可依赖</li>
+<li>能力有预期</li>
+<li>行为有后果</li>
+</ol>
+<p><img src="https://github.com/lxmliu2002/images/raw/main/post/20240715/image-20240715155837873.png" alt="image-20240715155837873" style="zoom: 33%;"></p>
+<ul>
+<li>内循环（传统数据安全的信任基础）：数据持有方在自己的运维安全域内对自己的数据使用和安全拥有全责</li>
+<li>外循环：责任主体不清，利益诉求不一致，能力参差不齐，责任链路难追溯</li>
+</ul>
+<p>技术信任：</p>
+<ol type="1">
+<li>可信数字应用身份</li>
+<li>使用权跨域管控：利益对齐的核心技术要求</li>
+<li>能力预期与不可能三角：安全要求，功能复杂度，单位成本</li>
+<li>全链路审计，闭环完成的数据可信流通体系</li>
+</ol>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习_d2</title>
+    <url>/2024/07/23/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_d2/</url>
+    <content><![CDATA[<h1 id="第-2-课隐私计算开源助力数据要素流通">第 2
+课：隐私计算开源助力数据要素流通</h1>
+<p>数据流转链路主要包括：采集、存储、加工、使用、提供、传输</p>
+<p>数据要素外循环是构建数据要素市场的核心</p>
+<p>从主体信任到技术信任，基于<strong>安全可信</strong>的技术信任体系是支撑全行业数据要素安全可控流转的基础。</p>
+<p>关键问题之一：数据权属</p>
+<ul>
+<li>控制面：以<strong>区块链、可信计算</strong>为核心支撑技术构建数据使用权跨域管控层</li>
+<li>数据面：以<strong>隐私计算</strong>为核心支撑技术构建密态数联网，包括密态枢纽与密态管道</li>
+</ul>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习_d3</title>
+    <url>/2024/07/23/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_d3/</url>
+    <content><![CDATA[<h1 id="第-3-课隐语架构概览">第 3 课：隐语架构概览</h1>
+<p>混合编译调度：RayFed</p>
+<p>SPU</p>
+<p>HEU：同态加密库</p>
+<p>TEEU：可信执行环境</p>
+<p>YACL</p>
+<p>KUSCIA</p>
+<p>跨域管控——三权分置</p>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习_d4</title>
+    <url>/2024/07/23/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_d4/</url>
+    <content><![CDATA[<h1 id="第-4-课secretflow-与-secretnote-的安装部署">第 4 课：SecretFlow
+与 Secretnote 的安装部署</h1>
+<p>按照文档指导安装即可。</p>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
 </search>
