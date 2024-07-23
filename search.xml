@@ -9353,4 +9353,84 @@ Resnet11。二进制代码分类任务则是给定 CFG
         <tag>机器学习</tag>
       </tags>
   </entry>
+  <entry>
+    <title>机器学习_d5</title>
+    <url>/2024/07/23/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_d5/</url>
+    <content><![CDATA[<h1 id="第-5-课基于隐私保护的机器学习算法介绍">第 5
+课：基于隐私保护的机器学习算法介绍</h1>
+<h2 id="预处理和隐私求交">预处理和隐私求交</h2>
+<h3 id="预处理dataframe和fedndarray">预处理：DataFrame和FedNdarray</h3>
+<p>DataFrame，联邦表格数据的封装，支持数据水平、垂直切分和混合切分</p>
+<p>FedNdarray：联邦ndarray的封装，支持水平和垂直切分</p>
+<h3 id="隐私求交psi">隐私求交PSI</h3>
+<p>隐私求交，使用密码学方法获取两份数据内容的交集，不泄漏任务交集以外的信息</p>
+<h2 id="决策树模型和线性回归模型">决策树模型和线性回归模型</h2>
+<h3 id="决策树模型xgb">决策树模型（XGB）</h3>
+<ul>
+<li>SS-XGB：垂直切分，可证安全</li>
+<li>SecureBoost：垂直切分，非可证安全</li>
+<li>水平XGBoost：水平切分，非可证安全</li>
+</ul>
+<h3 id="线性回归模型">线性回归模型</h3>
+<ul>
+<li>SS-SGD：垂直切分，可证安全，线性回归、逻辑回归</li>
+<li>HESS-SGD：垂直切分，可证安全，逻辑回归</li>
+<li>SS-GLM：垂直切分，可证安全，广义线性回归</li>
+<li>混合联邦LR：混合切分（2+n），非可证安全，逻辑回归</li>
+</ul>
+<h2 id="神经网络算法">神经网络算法</h2>
+<ul>
+<li>水平联邦学习</li>
+<li>垂直联邦学习</li>
+</ul>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>联邦学习_d5</title>
+    <url>/2024/07/23/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0_d5/</url>
+    <content><![CDATA[<h1 id="第-5-课基于隐私保护的机器学习算法介绍">第 5
+课：基于隐私保护的机器学习算法介绍</h1>
+<h2 id="预处理和隐私求交">预处理和隐私求交</h2>
+<h3 id="预处理dataframe和fedndarray">预处理：DataFrame和FedNdarray</h3>
+<p>DataFrame，联邦表格数据的封装，支持数据水平、垂直切分和混合切分</p>
+<p>FedNdarray：联邦ndarray的封装，支持水平和垂直切分</p>
+<h3 id="隐私求交psi">隐私求交PSI</h3>
+<p>隐私求交，使用密码学方法获取两份数据内容的交集，不泄漏任务交集以外的信息</p>
+<h2 id="决策树模型和线性回归模型">决策树模型和线性回归模型</h2>
+<h3 id="决策树模型xgb">决策树模型（XGB）</h3>
+<ul>
+<li>SS-XGB：垂直切分，可证安全</li>
+<li>SecureBoost：垂直切分，非可证安全</li>
+<li>水平XGBoost：水平切分，非可证安全</li>
+</ul>
+<h3 id="线性回归模型">线性回归模型</h3>
+<ul>
+<li>SS-SGD：垂直切分，可证安全，线性回归、逻辑回归</li>
+<li>HESS-SGD：垂直切分，可证安全，逻辑回归</li>
+<li>SS-GLM：垂直切分，可证安全，广义线性回归</li>
+<li>混合联邦LR：混合切分（2+n），非可证安全，逻辑回归</li>
+</ul>
+<h2 id="神经网络算法">神经网络算法</h2>
+<ul>
+<li>水平联邦学习</li>
+<li>垂直联邦学习</li>
+</ul>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>联邦学习</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>联邦学习</tag>
+      </tags>
+  </entry>
 </search>
