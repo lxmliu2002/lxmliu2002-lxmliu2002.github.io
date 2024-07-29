@@ -9433,4 +9433,84 @@ Resnet11。二进制代码分类任务则是给定 CFG
         <tag>联邦学习</tag>
       </tags>
   </entry>
+  <entry>
+    <title>机器学习_d6</title>
+    <url>/2024/07/29/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0_d6/</url>
+    <content><![CDATA[<h1 id="第-6-课逻辑回归lr与广义线性模型glm开发实践">第 6
+课：逻辑回归LR与广义线性模型GLM开发实践</h1>
+<h2 id="背景知识-lrglm应用场景及原理">背景知识-LR/GLM应用场景及原理</h2>
+<ul>
+<li><p>二分类问题：逻辑回归</p></li>
+<li><p>广义线性模型 GLM</p>
+<ul>
+<li>系统组件</li>
+<li>随机组件</li>
+<li>连接函数</li>
+</ul></li>
+</ul>
+<h2 id="隐语模型-密态sslrssglm">隐语模型-密态SSLR/SSGLM</h2>
+<p>广义线性模型参数估计</p>
+<ul>
+<li>一阶优化器：SGD参数估计方法</li>
+<li>二阶优化器：迭代重加权最小二乘法</li>
+<li>二阶优化器 + 一阶优化器</li>
+</ul>
+<p>秘密分享加法</p>
+<ol type="1">
+<li>秘密切分</li>
+<li>分割交换与求和</li>
+<li>结果构建</li>
+</ol>
+<h2 id="应用实现-从理论到隐语应用">应用实现-从理论到隐语应用</h2>
+<h2 id="实践">实践</h2>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>联邦学习_d6</title>
+    <url>/2024/07/29/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0_d6/</url>
+    <content><![CDATA[<h1 id="第-6-课逻辑回归lr与广义线性模型glm开发实践">第 6
+课：逻辑回归LR与广义线性模型GLM开发实践</h1>
+<h2 id="背景知识-lrglm应用场景及原理">背景知识-LR/GLM应用场景及原理</h2>
+<ul>
+<li><p>二分类问题：逻辑回归</p></li>
+<li><p>广义线性模型 GLM</p>
+<ul>
+<li>系统组件</li>
+<li>随机组件</li>
+<li>连接函数</li>
+</ul></li>
+</ul>
+<h2 id="隐语模型-密态sslrssglm">隐语模型-密态SSLR/SSGLM</h2>
+<p>广义线性模型参数估计</p>
+<ul>
+<li>一阶优化器：SGD参数估计方法</li>
+<li>二阶优化器：迭代重加权最小二乘法</li>
+<li>二阶优化器 + 一阶优化器</li>
+</ul>
+<p>秘密分享加法</p>
+<ol type="1">
+<li>秘密切分</li>
+<li>分割交换与求和</li>
+<li>结果构建</li>
+</ol>
+<h2 id="应用实现-从理论到隐语应用">应用实现-从理论到隐语应用</h2>
+<h2 id="实践">实践</h2>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>联邦学习</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>联邦学习</tag>
+      </tags>
+  </entry>
 </search>
