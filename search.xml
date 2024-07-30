@@ -9513,4 +9513,27 @@ Resnet11。二进制代码分类任务则是给定 CFG
         <tag>联邦学习</tag>
       </tags>
   </entry>
+  <entry>
+    <title>联邦学习_d7</title>
+    <url>/2024/07/30/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0_d7/</url>
+    <content><![CDATA[<h1 id="第-7-课隐语联邦学习在水平场景的开发实践">第 7
+课：隐语联邦学习在水平场景的开发实践</h1>
+<h2 id="隐语水平联邦框架介绍">隐语水平联邦框架介绍</h2>
+<ul>
+<li>用户友好</li>
+<li>功能完善</li>
+<li>性能出色</li>
+</ul>
+<h2 id="隐语flmodel实战讲解">隐语FLModel实战讲解</h2>
+<h2 id="隐语水平xgb实战讲解">隐语水平XGB实战讲解</h2>
+]]></content>
+      <categories>
+        <category>隐语社区</category>
+        <category>联邦学习</category>
+      </categories>
+      <tags>
+        <tag>隐语社区</tag>
+        <tag>联邦学习</tag>
+      </tags>
+  </entry>
 </search>
