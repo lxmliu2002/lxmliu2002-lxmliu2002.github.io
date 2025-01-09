@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Gist on lxmliu2002&#39;s Blog</title>
+    <link>https://lxmliu2002.github.io/tags/gist/</link>
+    <description>Recent content in Gist on lxmliu2002&#39;s Blog</description>
+    <generator>Hugo -- 0.140.2</generator>
+    <language>en</language>
+    <copyright>lxmliu2002</copyright>
+    <lastBuildDate>Sun, 10 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://lxmliu2002.github.io/tags/gist/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Code Syntax Guide</title>
+      <link>https://lxmliu2002.github.io/posts/code_syntax/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/code_syntax/</guid>
+      <description>Sample article showcasing basic code syntax and formatting for HTML elements.</description>
+    </item>
+  </channel>
+</rss>

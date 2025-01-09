@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>PaperReading_Asm2Vec | lxmliu2002&#39;s Blog</title>
+<meta name="keywords" content="Binary-Code-Search, Vulnerability-Search">
+<meta name="description" content="PaperReading">
+<meta name="author" content="lxmliu2002">
+<link rel="canonical" href="https://lxmliu2002.github.io/posts/paperreading_asm2vec/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css" integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://lxmliu2002.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lxmliu2002.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lxmliu2002.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lxmliu2002.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lxmliu2002.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://lxmliu2002.github.io/posts/paperreading_asm2vec/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://lxmliu2002.github.io/posts/paperreading_asm2vec/">
+  <meta property="og:site_name" content="lxmliu2002&#39;s Blog">
+  <meta property="og:title" content="PaperReading_Asm2Vec">
+  <meta property="og:description" content="PaperReading">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-03-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-03-22T00:00:00+00:00">
+    <meta property="article:tag" content="Binary-Code-Search">
+    <meta property="article:tag" content="Vulnerability-Search">
+    <meta property="og:image" content="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-03.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-03.jpg">
+<meta name="twitter:title" content="PaperReading_Asm2Vec">
+<meta name="twitter:description" content="PaperReading">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://lxmliu2002.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "PaperReading_Asm2Vec",
+      "item": "https://lxmliu2002.github.io/posts/paperreading_asm2vec/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "PaperReading_Asm2Vec",
+  "name": "PaperReading_Asm2Vec",
+  "description": "PaperReading",
+  "keywords": [
+    "Binary-Code-Search", "Vulnerability-Search"
+  ],
+  "articleBody": " Asm2Vec: Boosting Static Representation Robustness for Binary Clone Search against Code Obfuscation and Compiler Optimization 通读 Abstract 汇编工程在分析中特别重要，汇编克隆引擎通过识别重复的或已知的部件来帮助工程师。由于各种编译优化选项和代码混淆技术，使得那些看上去相似的函数，实际上截然不同。\n一个实用性的克隆搜索引擎依赖于将汇编代码 embedding 成一个鲁棒的向量，但现有的却依赖于人工定义的一些特征从汇编函数中提取特征向量，无法考虑特征之间的关系，无法有效分辨汇编函数是否相同。基于此，作者建议联合学习基于汇编代码的汇编函数的语义关系和向量表示，并开发出 Asm2Vec 模型。该模型只需要汇编代码输入，不需要任何先验知识，便可学习到丰富的语义知识。作者进行实验后得出结论，此模型在引入混淆和优化后优势更加明显。\nIntroduction 现有软件开发中，由于对源代码的多次重用，导致底层的汇编代码也存在大量克隆（重用）。一个高效的克隆搜索引擎能够显著减少逆向中手动分析的负担，通过海量的二进制数据解决信息需求。\n汇编代码克隆搜索已称为一种有助于解决安全相关问题的信息检索（IR）技术，被用于不同二进制文件来定位更改的部分，识别已知的二进制函数块，搜索现有软件或 IOT 固件设备中的已知的 bug 或 zero-day 漏洞和当源代码不可用时检测软件剽窃和 GNU 许可侵权。然而，由于不同的编译优化选项和混淆技术，使得逻辑上相似的汇编函数会有巨大差异，优化和混淆汇编函数打破了控制流和基本快的完整性，识别这些语义相似但是结构和语法不同的克隆代码非常困难，导致难于开发设计一个高效的搜索引擎。\n如图，相同的源代码编译后得到不同的汇编函数。gcc O0，gcc O3，LLVM 混淆器控制流图扁平化，LLVM 混淆器 Bogus 控制流图，Asm2Vec 都能够静态地将其识别成克隆。\n开发克隆引擎解决方案需要对汇编代码进行鲁棒的向量表示，以此测量出查询和索引函数之间的相似性。基于人工设计的特征，相关研究可以分为静态方法和动态方法。动态方法通过动态分析汇编代码的 IO 行为来建模语义相似性。静态方法通过观察代码在语法或描述性的信息上的静态差异来进行相似性建模。静态方法更可拓展，覆盖率高于动态方法。动态方法对语法的变化更加鲁棒，但可扩展性差。作者确定了两个问题，以提高静态特征的语义丰富度和鲁棒性。通过这两个因素，静态方法甚至可以比最先进的动态方法获得更好的性能。\n现有的最先进的静态方法没有考虑到特征之间的关系。作者建议将词汇语义关系合并到特征工程过程中。作者提出，不需要先验知识，而直接从普通的汇编代码中学习潜在的关系。Asm2Vec 学习 token 之间潜在的此法语义关系，而不需要任何先验知识。\n现有的静态方法的特征权重相同，或者需要一个等价的汇编函数的映射来学习权重。所选的权重可能不包含将一个汇编函数与另一个汇编函数区分开来的重要模式和多样性。经验丰富的逆向工程师并非通过平等地查看整个内容或逻辑来识别已知函数，而是根据经验确定是被特定函数的关键点和重要模式。作者提出，可以模拟经验丰富的逆向工程师的工作方式，训练一个神经网络模型来读取汇编代码数据，并让模型识别出一个将函数与其他函数区分开来的最佳表现。\n本文有如下贡献：\n提出一种新颖的汇编克隆检测方式，不需要人为定义特征，是第一个使用表示学习对汇编代码 embedding 的方法。\n开发了一个表示学习模型 Asm2Vec，以汇编代码作为输入，学习 token 之间的潜在词汇语义，并将汇编函数表示为内部语义信息的加权混合，不需要任何先验知识。\n深入理解人工智能——什么是表示学习？\n表示学习(representation learning)，又叫特征学习(feature learning)或者表征学习，一般指模型自动从数据中抽取特征或者表示的方法，是模型自动学习的过程\n总结，特征自学习\n证明 Asm2Vec 比最先进的静态和动态模型更加适应代码混淆和编译器优化。在公开的漏洞数据集上进行漏洞搜索实验，实现了零误报和 100% 召回率，优于目前最先进的漏洞搜索模型。\n但是，Asm2Vec 作为静态方法并不能完全消除代码混淆，但是比最先进的静态特征更加适应代码混淆。\nProblem Definition 在汇编克隆搜索领域，有四种类型的克隆：字面相同、句法等价、轻微修改、语义相似。本文主要聚焦语义相似类型，即灰白你函数可能在句法上不同，但源代码具有相似的功能逻辑。\n本文作如下概念定义：\nfunction 表示汇编函数 source function 表示源函数 repository function 表示存储在库中的汇编函数 target function 表示要查询的汇编函数 本文目标是从存储库 RP 中搜索其语义克隆，问题定义为：给定一个要查询的目标汇编函数 $f_t$，搜索问题是检索得到 top-k 的 repository function (按语义相似性进行排序)，这 k 个函数可被看作语义相似克隆。\nOverall Workflow 如图是 Asm2Vec 的流程图。\n给定一个汇编函数的存储库，为其构建一个神经网络模型进行训练 训练结束后，模型为每个汇编函数生成一个向量表示 给定一个要查询的函数（未用于训练），使用训练好的模型生成向量表示 比较查询函数与各个 repository function 向量表示之间的余弦相似度，选择 top-k 作为结果 如果将新的汇编函数添加到存储库中，遵循 step3 进行估计。该模型可以定期重新训练以保证生成质量。\nAssembly Code Representation Learning 作者基于 PV-DM 模型进行设计。\nPreliminaries PV-DM 模型针对于文本数据进行设计，是 word2vec 模型的拓展。模型结构如图所示：\n其在 CBOW 的基础上引入了 paragraph-ID。其将 paragraph-ID 和上下文的单词一起通过 embedding 矩阵得到对应的向量，然后通过 average 操作，最后经过 softmax 得到输出，输出与中心词对比，反向传播更新 embedding 矩阵。\nCBOW 是指连续词袋模型，每个词对应一个一维向量，初始化随机，通过梯度下降法进行更新。\n通过引入 paragraph-ID，由于 paragraph-ID 这个向量是整段的单词共享的，PV-DM 模型可以让一段(或一个主题)的单词都学习到部分主题信息。这样对于不同主题的单词的区分也就更加明显，embedding 的效果也自然优于传统的 CBOW 模型。\n然而，汇编代码比纯文本有着更丰富的语法，包含着操作符，操作数，控制流等等复杂的结构。因此，作者提出了 Asm2Vec 模型来对汇编代码进行 embedding。\nThe Asm2Vec Model 汇编函数可以用控制流程图（CFG）来表示，本文将控制流程图建模为多个序列，每一个序列对应着一个包含线性排列的汇编指令的潜在执行路径。给定一个二进制文件，使用 IDA pro 反汇编提取汇编函数及其基本块和控制流程图列表。\n因此将汇编函数转化为多个序列表示，对于每一个序列，从前往后扫描每一行汇编代码 A，将其前后的汇编代码（上下文）和一个代表该函数的向量（类比 paragraph-ID）一起，经过 average 和 concate 操作，最后经过 sigmoid 函数预测中心汇编代码 A。其中为 A 生成的汇编代码向量叫做 $t’$，用来做 token 的预测，而训练过程中得到的汇编代码向量叫做 $t$，用于表示 token 的语义信息。\n将 $t$ 和 $\\theta_{f_s}$ 初始化为 0 附近的小值，$t’$ 初始化为 0 进行训练，训练结束后，就可以为 repository 中的每一个函数生成对应的向量表示 $\\theta_{f_s}$ 。\nModeling Assembly Functions 作者把汇编函数建模成多序列。控制流图的原始线性布局覆盖了无效执行路径。不能直接把他当成训练序列。作者把控制流图当成边覆盖序列和随机 walks。\nSelective Callee Expansion 使用函数内联，用被调用函数的主体替换了函数调用指令，扩张了汇编函数，并减少了函数调用产生的开销。使用普通的汇编代码训练 Asm2Vec 模型，得到三类 tokens (操作符，操作数，库函数调用)。如果被调用函数长度占调用函数长度的比小于 0.6，或者调用函数小于 10 行指令，则内联该被调用函数。\nEdge Coverage 为了生成一个汇编函数的多个序列，从已经内联扩张的控制流程图中随机采样每一条边，直到原始图中的所有边都被覆盖。对于每条采样边，将它们的汇编代码串联起来，形成一个新的序列。这样，可以确保控制流程图被完全覆盖。\nRandom Walk 除了边采样外，本文还在扩张的 CFG 图上增加随机游走的方式，这样会生成比边采样更长的序列。Dominator 是一个在控制流分析和编译器优化中广泛使用的概念。如果任意基本块 C 必须经过基本块 A 才能到达基本块 B，则基本块 A 相对于基本块 B 占主导地位。经过多次随机游走后，主导块会被多次覆盖，这些主导块可以指示循环结构，也可以指示重要分支条件。通过随机游走找到主导块，可以是我们对该汇编函数有更深刻的认识。\nTranining, Estimating and Searching 针对存储库中的每一个汇编函数，采用边采样和随机游走的方式生成序列 (下图 function S)。对于每个序列，其遍历每一条指令并更新 Asm2Vec 模型权重(训练过程)。\n训练完成后，对于一个 query 函数 $f_t$ ，随机初始化一个向量 $\\theta_{f_t}$ ，大小取 0 附近的小值。作者选取和训练过程相同的方式，先提取出各个 sequence，然后依次遍历汇编代码，但是此时固定所有的 $t$ 和 $t’$，只对 $\\theta_{f_t}$ 反向传播更新权重，最终得到的 $\\theta_{f_t}$ 的值即为 target function 对应的向量表示。\n最后，target function 对应的向量表示和 repository function 向量表示的余弦相似度，选取相似度高的 top-k，即为结果。\n由于存储库中可能有数百万个汇编函数，因此可拓展性对于二进制克隆搜索至关重要。作者只使用成对相似度进行最近邻搜索。低维固定长度向量之间的成对搜索可以很快。\nExperiments 本文将 Asm2Vec 与现有的最先进的动态和静态汇编克隆搜索方法进行比较。有四个实验。首先，作者针对 GCC 的不同编译器优化对基线进行基准测试。其次，作者使用 CLANG 和 OLLVM 评估针对不同重代码混淆的克隆搜索质量。第三，作者使用前两个的所有二进制文件。在最后一个中，作者将 Asm2Vec 应用于公开可用的漏洞搜索数据集。所有二进制文件在克隆搜索之前都被剥离。\nSearching with Different Compiler Optimization Levels 使用 GCC 编译器版本 5.4.0 对不同优化级别的克隆搜索性能进行了基准测试。基于 10 个广泛使用的效用和数字计算库来评估 Asm2Vec。首先使用具有四种不同的编译器优化设置的 GCC 编译器编译选定的库，从而产生四个不同的二进制文件。然后测试了其中两个的组合，这对应于两个不同的优化级别。给定来自同一库的两个二进制文件，但具有不同的优化级别，使用编译器输出调试符号链接它们的组装函数，并生成函数之间的克隆映射。该映射用作仅用于评估的真实数据。在 RP 和 after 中针对第二个搜索，针对 RP 中的第一个搜索第二个。只有存储库中的二进制用于训练。取两者的平均值。\nAsm2Vec 在最好和更差的情况下都明显优于静态特征。它还优于 BinGo，这是一种最近涉及动态特征的语义克隆搜索方法。这表明 Asm2Vec 对编译器引入的大量语法修改和密集内联具有鲁棒性。它甚至与最先进的语义克隆动态方法 CACompare 实现了具有竞争力的性能。由于样本量小，差异在统计上没有差异。Asm2Vec 在不同的库中表现稳定，能够高精度找到克隆。平均而言，它在检测编译器优化选项 O1、O2 和 O3 之间的克隆方面实现了 93% 以上的精度。随着两个优化级别之间的差异的增加，Asm2Vec 的性能降低。然而，它比其他静态特征不太敏感，这证明了它的鲁棒性。\nSearching with Code Obfuscation Obfuscator-LLVM (O-LLVM) 建立在 LLVM 框架和 CLANG 编译器工具链之上，在中间语言级别运行，在生成二进制文件之前修改程序的逻辑，增加二进制代码的复杂性。O-LLVM 使用三种不同的技术及其组合：Bogus Control Flow Graph (BCF)、Control Flow Flattening (FLA) 和 Instruction Substitution(SUB)。如图是其统计数据。\nBCF 通过添加大量不相关的随机基本块和分支来修改控制流图。它还将拆分、合并和重新排序原始基本块。BCF 打破了 CFG 和基本块完整性。 FLA 使用新条件的复杂层次结构重新组织原始 CFG 作为交换机。原始指令被大量修改以适应新的进入条件和变量。线性布局已被完全修改（平均添加了 376% 的顶点和边）。基于图的特征忽略了这种技术。对于完全覆盖 CFG 的动态方法，它也是不可扩展的。 SUB 通过使用预定义的规则对函数逻辑进行一次传递，将汇编代码的片段替换为其等效形式。该技术修改基本块的内容并添加新的常量。SUB 不会改变大部分的图结构。 指令替换可以显著提高 n-gram 的性能。SUB 通过在中间添加指令来打破序列。n-perm 的性能优于 n-gram，因为它忽略了标记的顺序。基于图的特征仍然可以恢复超过 60% 的克隆，因为图结构没有被大量修改。Asm2Vec 在汇编指令替换方面可以达到 96% 以上的精度。指令被替换为它们的等价形式，实际上仍然与原始形式具有相似的词汇语义。这些信息被 Asm2Vec 很好地捕获。\n在应用 BCF 混淆后，Asm2Vec 仍然可以达到 88% 以上的精度，其中控制流图看起来与原始图非常不同。它表明 Asm2Vec 对插入的 junk 代码和伪造的基本块具有弹性。FLA 混淆破坏了所有子图结构。它们中的大多数的精度值在零附近。即使在这种情况中，Asm2Vec 仍然可以正确匹配 84% 的组装功能克隆。结果表明，Asm2Vec 对子结构变化和线性布局变化具有弹性。在应用所有混淆技术后，Asm2Vec 仍然可以恢复大约 81% 的汇编功能。\nAsm2Vec 可以从噪声中正确定位和识别关键模式。插入垃圾基本块或噪声指令遵循随机汇编代码的一般语法，可以通过邻居指令轻松预测。Asm2Vec 中的函数表示捕获了邻居指令无法提供的缺失信息。它还对此信息进行加权，以最好地区分一个函数与另一个函数。\nSearching against All Binaries 在本实验中，使用前两个实验用到的所有二进制文件，评估了藏候选集较大时，Asm2Vec 能够区分不同的汇编函数。作者还使用不同的检索阈值来评估其性能。\n作者在不同的 top-k 位置手机召回率和精度。即使使用大量的汇编函数，Asm2Vec 仍然可以在前 20 个结果中达到 70% 的召回率。它显着优于其他传统的基于 tokens 和图形的特征。此外，我们观察到基于 tokens 的方法通常比基于子图的方法表现更好。\n可见随着 k 的不断变化整体召回率呈上升趋势。观察召回率随 K 值变化曲线和准确率-召回率曲线可见，Asm2vec 模型的效果优势明显。\nSearching Vulnerability Functions 将 Asm2Vec 实现为开源漏洞搜索引擎，并遵循相同的实验协议，将其性能与最先进的漏洞搜索解决方案进行比较。对于所有漏洞，Asm2Vec 的误报为零，召回率为 100%。因此，它实现了 1 的 ROC 和 CROC。\nJIT: 它转换函数在运行时生成其代码。几乎每条指令都被替换为函数调用。通过设计，静态方法很难恢复任何变体。我们的结果表明，Asm2Vec 仍然能够通过编码文字来恢复 97.2%，使用虚拟化恢复恢复 35%，使用 JIT 执行恢复 45%。我们检查结果并发现 Asm2Vec 试图匹配混淆器忽略的任何相似信息。然而，同时应用三种混淆技术后，Asm2Vec 不再恢复任何克隆。\nRelated Work Limitations and Conclusion Asm2Vec 有几个限制。首先，它是为单个汇编代码语言设计的，克隆搜索引擎与架构无关。在这个阶段，它并不直接适用于跨架构的语义克隆。未来，我们将通过考虑它们共享的标记（例如常量和 libc 调用）来对齐两种不同组装语言之间的词汇语义空间。其次，当前的选择性调用扩展机制无法确定动态跳转，例如跳转表。第三，作为黑盒静态方法，Asm2Vec 无法通过显示克隆的子图或证明符号等价来解释或证明返回的结果。它的可解释性有限。\n在本文中，我们提出了一种名为 Asm2Vec 的稳健准确的汇编克隆搜索方法，该方法通过将其与其他人区分开来来学习汇编函数的向量表示。Asm2Vec 不需要任何先验知识，例如汇编函数之间的正确映射或使用的编译器优化级别。它学习出现在汇编代码中的标记的词汇语义关系，并将汇编函数表示为潜在语义的内部加权混合。除了汇编函数外，它还可以应用于不同粒度的装配序列，如二进制文件、片段、基本块或函数。我们使用不同的编译器优化选项和混淆技术对汇编代码克隆搜索进行了广泛的实验。我们的结果表明，Asm2Vec 对汇编指令和控制流图的严重变化是准确的和稳健的。\nreferences https://blog.csdn.net/weixin_43846270/article/details/109103725\nhttps://www.jianshu.com/p/6cd6fb4ac266\nhttps://zhuanlan.zhihu.com/p/303086691\nhttps://zhuanlan.zhihu.com/p/191501086\nhttps://nankai.feishu.cn/minutes/obcnal4265y49pfwh4y2qn3i\n",
+  "wordCount" : "454",
+  "inLanguage": "en",
+  "image":"https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-03.jpg","datePublished": "2024-03-22T00:00:00Z",
+  "dateModified": "2024-03-22T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "lxmliu2002"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lxmliu2002.github.io/posts/paperreading_asm2vec/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "lxmliu2002's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lxmliu2002.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://lxmliu2002.github.io/" accesskey="h" title="lxmliu2002&#39;s Blog (Alt + H)">lxmliu2002&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://lxmliu2002.github.io/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/" title="homepage">
+                    <span>homepage</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://lxmliu2002.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://lxmliu2002.github.io/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      PaperReading_Asm2Vec
+    </h1>
+    <div class="post-description">
+      PaperReading
+    </div>
+    <div class="post-meta"><span title='2024-03-22 00:00:00 +0000 UTC'>March 22, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;lxmliu2002&nbsp;|&nbsp;<a href="https://github.com/lxmliu2002/My_Blog/tree/master/content/posts/PaperReading_Asm2Vec.md" rel="noopener noreferrer" target="_blank">Any Suggestions?</a>
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="eager" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-03.jpg" alt="">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#asm2vec-boosting-static-representation-robustness-for-binary-clone-search-against-code-obfuscation-and-compiler-optimization" aria-label="Asm2Vec: Boosting Static Representation Robustness for Binary Clone Search against Code Obfuscation and Compiler Optimization">Asm2Vec: Boosting Static Representation Robustness for Binary Clone Search against Code Obfuscation and Compiler Optimization</a><ul>
+                        
+                <li>
+                    <a href="#%e9%80%9a%e8%af%bb" aria-label="通读">通读</a><ul>
+                        
+                <li>
+                    <a href="#abstract" aria-label="Abstract">Abstract</a></li>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#problem-definition" aria-label="Problem Definition">Problem Definition</a></li>
+                <li>
+                    <a href="#overall-workflow" aria-label="Overall Workflow">Overall Workflow</a></li>
+                <li>
+                    <a href="#assembly-code-representation-learning" aria-label="Assembly Code Representation Learning">Assembly Code Representation Learning</a><ul>
+                        
+                <li>
+                    <a href="#preliminaries" aria-label="Preliminaries">Preliminaries</a></li>
+                <li>
+                    <a href="#the-asm2vec-model" aria-label="The Asm2Vec Model">The Asm2Vec Model</a></li>
+                <li>
+                    <a href="#modeling-assembly-functions" aria-label="Modeling Assembly Functions">Modeling Assembly Functions</a><ul>
+                        
+                <li>
+                    <a href="#selective-callee-expansion" aria-label="Selective Callee Expansion">Selective Callee Expansion</a></li>
+                <li>
+                    <a href="#edge-coverage" aria-label="Edge Coverage">Edge Coverage</a></li>
+                <li>
+                    <a href="#random-walk" aria-label="Random Walk">Random Walk</a></li></ul>
+                </li>
+                <li>
+                    <a href="#tranining-estimating-and-searching" aria-label="Tranining, Estimating and Searching">Tranining, Estimating and Searching</a></li></ul>
+                </li>
+                <li>
+                    <a href="#experiments" aria-label="Experiments">Experiments</a><ul>
+                        
+                <li>
+                    <a href="#searching-with-different-compiler-optimization-levels" aria-label="Searching with Different Compiler Optimization Levels">Searching with Different Compiler Optimization Levels</a></li>
+                <li>
+                    <a href="#searching-with-code-obfuscation" aria-label="Searching with Code Obfuscation">Searching with Code Obfuscation</a></li>
+                <li>
+                    <a href="#searching-against-all-binaries" aria-label="Searching against All Binaries">Searching against All Binaries</a></li>
+                <li>
+                    <a href="#searching-vulnerability-functions" aria-label="Searching Vulnerability Functions">Searching Vulnerability Functions</a></li></ul>
+                </li>
+                <li>
+                    <a href="#related-work" aria-label="Related Work">Related Work</a></li>
+                <li>
+                    <a href="#limitations-and-conclusion" aria-label="Limitations and Conclusion">Limitations and Conclusion</a></li></ul>
+                </li>
+                <li>
+                    <a href="#references" aria-label="references">references</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><ul>
+<li>
+<h1 id="asm2vec-boosting-static-representation-robustness-for-binary-clone-search-against-code-obfuscation-and-compiler-optimization">Asm2Vec: Boosting Static Representation Robustness for Binary Clone Search against Code Obfuscation and Compiler Optimization<a hidden class="anchor" aria-hidden="true" href="#asm2vec-boosting-static-representation-robustness-for-binary-clone-search-against-code-obfuscation-and-compiler-optimization">#</a></h1>
+<h2 id="通读">通读<a hidden class="anchor" aria-hidden="true" href="#通读">#</a></h2>
+<h3 id="abstract">Abstract<a hidden class="anchor" aria-hidden="true" href="#abstract">#</a></h3>
+<p>汇编工程在分析中特别重要，汇编克隆引擎通过识别重复的或已知的部件来帮助工程师。由于各种编译优化选项和代码混淆技术，使得那些看上去相似的函数，实际上截然不同。</p>
+<p>一个实用性的克隆搜索引擎依赖于将汇编代码 embedding 成一个鲁棒的向量，但现有的却依赖于人工定义的一些特征从汇编函数中提取特征向量，无法考虑特征之间的关系，无法有效分辨汇编函数是否相同。基于此，作者建议联合学习基于汇编代码的汇编函数的语义关系和向量表示，并开发出 Asm2Vec 模型。该模型只需要汇编代码输入，不需要任何先验知识，便可学习到丰富的语义知识。作者进行实验后得出结论，此模型在引入混淆和优化后优势更加明显。</p>
+<h3 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h3>
+<p>现有软件开发中，由于对源代码的多次重用，导致底层的汇编代码也存在大量克隆（重用）。一个高效的克隆搜索引擎能够显著减少逆向中手动分析的负担，通过海量的二进制数据解决信息需求。</p>
+<p>汇编代码克隆搜索已称为一种有助于解决安全相关问题的信息检索（IR）技术，被用于不同二进制文件来定位更改的部分，识别已知的二进制函数块，搜索现有软件或 IOT 固件设备中的已知的 bug 或 zero-day 漏洞和当源代码不可用时检测软件剽窃和 GNU 许可侵权。然而，由于不同的编译优化选项和混淆技术，使得逻辑上相似的汇编函数会有巨大差异，优化和混淆汇编函数打破了控制流和基本快的完整性，识别这些语义相似但是结构和语法不同的克隆代码非常困难，导致难于开发设计一个高效的搜索引擎。</p>
+<img src="https://github.com/lxmliu2002/images/raw/main/post/20240322/image-20240322102427626.png" alt="image-20240322102427626" style="zoom: 33%;" />
+<p>如图，相同的源代码编译后得到不同的汇编函数。gcc O0，gcc O3，LLVM 混淆器控制流图扁平化，LLVM 混淆器 Bogus 控制流图，Asm2Vec 都能够静态地将其识别成克隆。</p>
+<p>开发克隆引擎解决方案需要对汇编代码进行鲁棒的向量表示，以此测量出查询和索引函数之间的相似性。基于人工设计的特征，相关研究可以分为静态方法和动态方法。动态方法通过动态分析汇编代码的 IO 行为来建模语义相似性。静态方法通过观察代码在语法或描述性的信息上的静态差异来进行相似性建模。静态方法更可拓展，覆盖率高于动态方法。动态方法对语法的变化更加鲁棒，但可扩展性差。作者确定了两个问题，以提高静态特征的语义丰富度和鲁棒性。通过这两个因素，静态方法甚至可以比最先进的动态方法获得更好的性能。</p>
+<ol>
+<li>
+<p>现有的最先进的静态方法没有考虑到特征之间的关系。作者建议将词汇语义关系合并到特征工程过程中。作者提出，不需要先验知识，而直接从普通的汇编代码中学习潜在的关系。Asm2Vec 学习 token 之间潜在的此法语义关系，而不需要任何先验知识。</p>
+<img src="https://github.com/lxmliu2002/images/raw/main/post/20240322/image-20240322104404754.png" alt="image-20240322104404754" style="zoom:33%;" />
+</li>
+<li>
+<p>现有的静态方法的特征权重相同，或者需要一个等价的汇编函数的映射来学习权重。所选的权重可能不包含将一个汇编函数与另一个汇编函数区分开来的重要模式和多样性。经验丰富的逆向工程师并非通过平等地查看整个内容或逻辑来识别已知函数，而是根据经验确定是被特定函数的关键点和重要模式。作者提出，可以模拟经验丰富的逆向工程师的工作方式，训练一个神经网络模型来读取汇编代码数据，并让模型识别出一个将函数与其他函数区分开来的最佳表现。</p>
+</li>
+</ol>
+<p>本文有如下贡献：</p>
+<ol>
+<li>
+<p>提出一种新颖的汇编克隆检测方式，不需要人为定义特征，是第一个使用表示学习对汇编代码 embedding 的方法。</p>
+</li>
+<li>
+<p>开发了一个表示学习模型 Asm2Vec，以汇编代码作为输入，学习 token 之间的潜在词汇语义，并将汇编函数表示为内部语义信息的加权混合，不需要任何先验知识。</p>
+<blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/402902793">深入理解人工智能——什么是表示学习？</a></p>
+<p><strong>表示学习(representation learning)</strong>，又叫特征学习(feature learning)或者表征学习，一般指模型自动从数据中抽取特征或者表示的方法，是模型自动学习的过程</p>
+<p>总结，特征自学习</p>
+</blockquote>
+</li>
+<li>
+<p>证明 Asm2Vec 比最先进的静态和动态模型更加适应代码混淆和编译器优化。在公开的漏洞数据集上进行漏洞搜索实验，实现了零误报和 100% 召回率，优于目前最先进的漏洞搜索模型。</p>
+</li>
+</ol>
+<p>但是，Asm2Vec 作为静态方法并不能完全消除代码混淆，但是比最先进的静态特征更加适应代码混淆。</p>
+<h3 id="problem-definition">Problem Definition<a hidden class="anchor" aria-hidden="true" href="#problem-definition">#</a></h3>
+<p>在汇编克隆搜索领域，有四种类型的克隆：字面相同、句法等价、轻微修改、语义相似。本文主要聚焦语义相似类型，即灰白你函数可能在句法上不同，但源代码具有相似的功能逻辑。</p>
+<p>本文作如下概念定义：</p>
+<ul>
+<li>function 表示汇编函数</li>
+<li>source function 表示源函数</li>
+<li>repository function 表示存储在库中的汇编函数</li>
+<li>target function 表示要查询的汇编函数</li>
+</ul>
+<p>本文目标是从存储库 RP 中搜索其语义克隆，问题定义为：给定一个要查询的目标汇编函数 $f_t$，搜索问题是检索得到 top-k 的 repository function (按语义相似性进行排序)，这 k 个函数可被看作语义相似克隆。</p>
+<h3 id="overall-workflow">Overall Workflow<a hidden class="anchor" aria-hidden="true" href="#overall-workflow">#</a></h3>
+<p>如图是 Asm2Vec 的流程图。</p>
+<img src="https://github.com/lxmliu2002/images/raw/main/post/20240322/image-20240322120549152.png" alt="image-20240322120549152" style="zoom:50%;" />
+<ol>
+<li>给定一个汇编函数的存储库，为其构建一个神经网络模型进行训练</li>
+<li>训练结束后，模型为每个汇编函数生成一个向量表示</li>
+<li>给定一个要查询的函数（未用于训练），使用训练好的模型生成向量表示</li>
+<li>比较查询函数与各个 repository function 向量表示之间的余弦相似度，选择 top-k 作为结果</li>
+</ol>
+<p>如果将新的汇编函数添加到存储库中，遵循 step3 进行估计。该模型可以定期重新训练以保证生成质量。</p>
+<h3 id="assembly-code-representation-learning">Assembly Code Representation Learning<a hidden class="anchor" aria-hidden="true" href="#assembly-code-representation-learning">#</a></h3>
+<p>作者基于 PV-DM 模型进行设计。</p>
+<h4 id="preliminaries">Preliminaries<a hidden class="anchor" aria-hidden="true" href="#preliminaries">#</a></h4>
+<p>PV-DM 模型针对于文本数据进行设计，是 word2vec 模型的拓展。模型结构如图所示：</p>
+<img src="https://github.com/lxmliu2002/images/raw/main/post/20240322/image-20240322201158062.png" alt="image-20240322201158062" style="zoom:50%;" />
+<p>其在 CBOW 的基础上引入了 paragraph-ID。其将 paragraph-ID 和上下文的单词一起通过 embedding 矩阵得到对应的向量，然后通过 average 操作，最后经过 softmax 得到输出，输出与中心词对比，反向传播更新 embedding 矩阵。</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/qq_45198339/article/details/128772164">CBOW</a> 是指连续词袋模型，每个词对应一个一维向量，初始化随机，通过梯度下降法进行更新。</p>
+</blockquote>
+<p>通过引入 paragraph-ID，由于 paragraph-ID 这个向量是整段的单词共享的，PV-DM 模型可以让一段(或一个主题)的单词都学习到部分主题信息。这样对于不同主题的单词的区分也就更加明显，embedding 的效果也自然优于传统的 CBOW 模型。</p>
+<p>然而，汇编代码比纯文本有着更丰富的语法，包含着操作符，操作数，控制流等等复杂的结构。因此，作者提出了 Asm2Vec 模型来对汇编代码进行 embedding。</p>
+<h4 id="the-asm2vec-model">The Asm2Vec Model<a hidden class="anchor" aria-hidden="true" href="#the-asm2vec-model">#</a></h4>
+<p>汇编函数可以用控制流程图（CFG）来表示，本文将控制流程图建模为多个序列，每一个序列对应着一个包含线性排列的汇编指令的潜在执行路径。给定一个二进制文件，使用 IDA pro 反汇编提取汇编函数及其基本块和控制流程图列表。</p>
+<img src="https://github.com/lxmliu2002/images/raw/main/post/20240322/image-20240322202411622.png" alt="image-20240322202411622" style="zoom:50%;" />
+<p>因此将汇编函数转化为多个序列表示，对于每一个序列，从前往后扫描每一行汇编代码 A，将其前后的汇编代码（上下文）和一个代表该函数的向量（类比 paragraph-ID）一起，经过 average 和 concate 操作，最后经过 sigmoid 函数预测中心汇编代码 A。其中为 A 生成的汇编代码向量叫做 $t&rsquo;$，用来做 token 的预测，而训练过程中得到的汇编代码向量叫做 $t$，用于表示 token 的语义信息。</p>
+<p>将 $t$ 和 $\theta_{f_s}$ 初始化为 0 附近的小值，$t&rsquo;$ 初始化为 0 进行训练，训练结束后，就可以为 repository 中的每一个函数生成对应的向量表示 $\theta_{f_s}$ 。</p>
+<h4 id="modeling-assembly-functions">Modeling Assembly Functions<a hidden class="anchor" aria-hidden="true" href="#modeling-assembly-functions">#</a></h4>
+<p>作者把汇编函数建模成多序列。控制流图的原始线性布局覆盖了无效执行路径。不能直接把他当成训练序列。作者把控制流图当成边覆盖序列和随机 walks。</p>
+<h5 id="selective-callee-expansion">Selective Callee Expansion<a hidden class="anchor" aria-hidden="true" href="#selective-callee-expansion">#</a></h5>
+<p>使用函数内联，用被调用函数的主体替换了函数调用指令，扩张了汇编函数，并减少了函数调用产生的开销。使用普通的汇编代码训练 Asm2Vec 模型，得到三类 tokens (操作符，操作数，库函数调用)。如果被调用函数长度占调用函数长度的比小于 0.6，或者调用函数小于 10 行指令，则内联该被调用函数。</p>
+<h5 id="edge-coverage">Edge Coverage<a hidden class="anchor" aria-hidden="true" href="#edge-coverage">#</a></h5>
+<p>为了生成一个汇编函数的多个序列，从已经内联扩张的控制流程图中随机采样每一条边，直到原始图中的所有边都被覆盖。对于每条采样边，将它们的汇编代码串联起来，形成一个新的序列。这样，可以确保控制流程图被完全覆盖。</p>
+<h5 id="random-walk">Random Walk<a hidden class="anchor" aria-hidden="true" href="#random-walk">#</a></h5>
+<p>除了边采样外，本文还在扩张的 CFG 图上增加随机游走的方式，这样会生成比边采样更长的序列。Dominator 是一个在控制流分析和编译器优化中广泛使用的概念。如果任意基本块 C 必须经过基本块 A 才能到达基本块 B，则基本块 A 相对于基本块 B 占主导地位。经过多次随机游走后，主导块会被多次覆盖，这些主导块可以指示循环结构，也可以指示重要分支条件。通过随机游走找到主导块，可以是我们对该汇编函数有更深刻的认识。</p>
+<h4 id="tranining-estimating-and-searching">Tranining, Estimating and Searching<a hidden class="anchor" aria-hidden="true" href="#tranining-estimating-and-searching">#</a></h4>
+<p>针对存储库中的每一个汇编函数，采用边采样和随机游走的方式生成序列 (下图 function S)。对于每个序列，其遍历每一条指令并更新 Asm2Vec 模型权重(训练过程)。</p>
+<img src="https://github.com/lxmliu2002/images/raw/main/post/20240322/image-20240322204751722.png" alt="image-20240322204751722" style="zoom:50%;" />
+<p>训练完成后，对于一个 query 函数 $f_t$ ，随机初始化一个向量 $\theta_{f_t}$ ，大小取 0 附近的小值。作者选取和训练过程相同的方式，先提取出各个 sequence，然后依次遍历汇编代码，但是此时固定所有的 $t$ 和 $t&rsquo;$，只对 $\theta_{f_t}$ 反向传播更新权重，最终得到的 $\theta_{f_t}$ 的值即为 target function 对应的向量表示。</p>
+<img src="https://github.com/lxmliu2002/images/raw/main/post/20240322/image-20240322204859718.png" alt="image-20240322204859718" style="zoom:50%;" />
+<p>最后，target function 对应的向量表示和 repository function 向量表示的余弦相似度，选取相似度高的 top-k，即为结果。</p>
+<p>由于存储库中可能有数百万个汇编函数，因此可拓展性对于二进制克隆搜索至关重要。作者只使用成对相似度进行最近邻搜索。低维固定长度向量之间的成对搜索可以很快。</p>
+<h3 id="experiments">Experiments<a hidden class="anchor" aria-hidden="true" href="#experiments">#</a></h3>
+<p>本文将 Asm2Vec 与现有的最先进的动态和静态汇编克隆搜索方法进行比较。有四个实验。首先，作者针对 GCC 的不同编译器优化对基线进行基准测试。其次，作者使用 CLANG 和 OLLVM 评估针对不同重代码混淆的克隆搜索质量。第三，作者使用前两个的所有二进制文件。在最后一个中，作者将 Asm2Vec 应用于公开可用的漏洞搜索数据集。所有二进制文件在克隆搜索之前都被剥离。</p>
+<h4 id="searching-with-different-compiler-optimization-levels">Searching with Different Compiler Optimization Levels<a hidden class="anchor" aria-hidden="true" href="#searching-with-different-compiler-optimization-levels">#</a></h4>
+<p>使用 GCC 编译器版本 5.4.0 对不同优化级别的克隆搜索性能进行了基准测试。基于 10 个广泛使用的效用和数字计算库来评估 Asm2Vec。首先使用具有四种不同的编译器优化设置的 GCC 编译器编译选定的库，从而产生四个不同的二进制文件。然后测试了其中两个的组合，这对应于两个不同的优化级别。给定来自同一库的两个二进制文件，但具有不同的优化级别，使用编译器输出调试符号链接它们的组装函数，并生成函数之间的克隆映射。该映射用作仅用于评估的真实数据。在 RP 和 after 中针对第二个搜索，针对 RP 中的第一个搜索第二个。只有存储库中的二进制用于训练。取两者的平均值。</p>
+<img src="https://github.com/lxmliu2002/images/raw/main/post/20240322/image-20240322214459101.png" alt="image-20240322214459101" style="zoom:33%;" />
+<p>Asm2Vec 在最好和更差的情况下都明显优于静态特征。它还优于 BinGo，这是一种最近涉及动态特征的语义克隆搜索方法。这表明 Asm2Vec 对编译器引入的大量语法修改和密集内联具有鲁棒性。它甚至与最先进的语义克隆动态方法 CACompare 实现了具有竞争力的性能。由于样本量小，差异在统计上没有差异。Asm2Vec 在不同的库中表现稳定，能够高精度找到克隆。平均而言，它在检测编译器优化选项 O1、O2 和 O3 之间的克隆方面实现了 93% 以上的精度。随着两个优化级别之间的差异的增加，Asm2Vec 的性能降低。然而，它比其他静态特征不太敏感，这证明了它的鲁棒性。</p>
+<h4 id="searching-with-code-obfuscation">Searching with Code Obfuscation<a hidden class="anchor" aria-hidden="true" href="#searching-with-code-obfuscation">#</a></h4>
+<p>Obfuscator-LLVM (O-LLVM) 建立在 LLVM 框架和 CLANG 编译器工具链之上，在中间语言级别运行，在生成二进制文件之前修改程序的逻辑，增加二进制代码的复杂性。O-LLVM 使用三种不同的技术及其组合：Bogus Control Flow Graph (BCF)、Control Flow Flattening (FLA) 和 Instruction Substitution(SUB)。如图是其统计数据。</p>
+<img src="https://github.com/lxmliu2002/images/raw/main/post/20240322/image-20240322215826805.png" alt="image-20240322215826805" style="zoom:50%;" />
+<ul>
+<li>BCF 通过添加大量不相关的随机基本块和分支来修改控制流图。它还将拆分、合并和重新排序原始基本块。BCF 打破了 CFG 和基本块完整性。</li>
+<li>FLA 使用新条件的复杂层次结构重新组织原始 CFG 作为交换机。原始指令被大量修改以适应新的进入条件和变量。线性布局已被完全修改（平均添加了 376% 的顶点和边）。基于图的特征忽略了这种技术。对于完全覆盖 CFG 的动态方法，它也是不可扩展的。</li>
+<li>SUB 通过使用预定义的规则对函数逻辑进行一次传递，将汇编代码的片段替换为其等效形式。该技术修改基本块的内容并添加新的常量。SUB 不会改变大部分的图结构。</li>
+</ul>
+<img src="https://github.com/lxmliu2002/images/raw/main/post/20240322/image-20240322220416814.png" alt="image-20240322220416814" style="zoom: 33%;" />
+<p>指令替换可以显著提高 n-gram 的性能。SUB 通过在中间添加指令来打破序列。n-perm 的性能优于 n-gram，因为它忽略了标记的顺序。基于图的特征仍然可以恢复超过 60% 的克隆，因为图结构没有被大量修改。Asm2Vec 在汇编指令替换方面可以达到 96% 以上的精度。指令被替换为它们的等价形式，实际上仍然与原始形式具有相似的词汇语义。这些信息被 Asm2Vec 很好地捕获。</p>
+<p>在应用 BCF 混淆后，Asm2Vec 仍然可以达到 88% 以上的精度，其中控制流图看起来与原始图非常不同。它表明 Asm2Vec 对插入的 junk 代码和伪造的基本块具有弹性。FLA 混淆破坏了所有子图结构。它们中的大多数的精度值在零附近。即使在这种情况中，Asm2Vec 仍然可以正确匹配 84% 的组装功能克隆。结果表明，Asm2Vec 对子结构变化和线性布局变化具有弹性。在应用所有混淆技术后，Asm2Vec 仍然可以恢复大约 81% 的汇编功能。</p>
+<p>Asm2Vec 可以从噪声中正确定位和识别关键模式。插入垃圾基本块或噪声指令遵循随机汇编代码的一般语法，可以通过邻居指令轻松预测。Asm2Vec 中的函数表示捕获了邻居指令无法提供的缺失信息。它还对此信息进行加权，以最好地区分一个函数与另一个函数。</p>
+<h4 id="searching-against-all-binaries">Searching against All Binaries<a hidden class="anchor" aria-hidden="true" href="#searching-against-all-binaries">#</a></h4>
+<p>在本实验中，使用前两个实验用到的所有二进制文件，评估了藏候选集较大时，Asm2Vec 能够区分不同的汇编函数。作者还使用不同的检索阈值来评估其性能。</p>
+<p>作者在不同的 top-k 位置手机召回率和精度。即使使用大量的汇编函数，Asm2Vec 仍然可以在前 20 个结果中达到 70% 的召回率。它显着优于其他传统的基于 tokens 和图形的特征。此外，我们观察到基于 tokens 的方法通常比基于子图的方法表现更好。</p>
+<img src="https://github.com/lxmliu2002/images/raw/main/post/20240322/image-20240322230106682.png" alt="image-20240322230106682" style="zoom: 33%;" />
+<p>可见随着 k 的不断变化整体召回率呈上升趋势。观察召回率随 K 值变化曲线和准确率-召回率曲线可见，Asm2vec 模型的效果优势明显。</p>
+<h4 id="searching-vulnerability-functions">Searching Vulnerability Functions<a hidden class="anchor" aria-hidden="true" href="#searching-vulnerability-functions">#</a></h4>
+<p>将 Asm2Vec 实现为开源漏洞搜索引擎，并遵循相同的实验协议，将其性能与最先进的漏洞搜索解决方案进行比较。对于所有漏洞，Asm2Vec 的误报为零，召回率为 100%。因此，它实现了 1 的 ROC 和 CROC。</p>
+<img src="https://github.com/lxmliu2002/images/raw/main/post/20240322/image-20240322230353068.png" alt="image-20240322230353068" style="zoom:50%;" />
+<p>JIT: 它转换函数在运行时生成其代码。几乎每条指令都被替换为函数调用。通过设计，静态方法很难恢复任何变体。我们的结果表明，Asm2Vec 仍然能够通过编码文字来恢复 97.2%，使用虚拟化恢复恢复 35%，使用 JIT 执行恢复 45%。我们检查结果并发现 Asm2Vec 试图匹配混淆器忽略的任何相似信息。然而，同时应用三种混淆技术后，Asm2Vec 不再恢复任何克隆。</p>
+<img src="https://github.com/lxmliu2002/images/raw/main/post/20240322/image-20240322230813840.png" alt="image-20240322230813840" style="zoom:33%;" />
+<h3 id="related-work">Related Work<a hidden class="anchor" aria-hidden="true" href="#related-work">#</a></h3>
+<h3 id="limitations-and-conclusion">Limitations and Conclusion<a hidden class="anchor" aria-hidden="true" href="#limitations-and-conclusion">#</a></h3>
+<p>Asm2Vec 有几个限制。首先，它是为单个汇编代码语言设计的，克隆搜索引擎与架构无关。在这个阶段，它并不直接适用于跨架构的语义克隆。未来，我们将通过考虑它们共享的标记（例如常量和 libc 调用）来对齐两种不同组装语言之间的词汇语义空间。其次，当前的选择性调用扩展机制无法确定动态跳转，例如跳转表。第三，作为黑盒静态方法，Asm2Vec 无法通过显示克隆的子图或证明符号等价来解释或证明返回的结果。它的可解释性有限。</p>
+<p>在本文中，我们提出了一种名为 Asm2Vec 的稳健准确的汇编克隆搜索方法，该方法通过将其与其他人区分开来来学习汇编函数的向量表示。Asm2Vec 不需要任何先验知识，例如汇编函数之间的正确映射或使用的编译器优化级别。它学习出现在汇编代码中的标记的词汇语义关系，并将汇编函数表示为潜在语义的内部加权混合。除了汇编函数外，它还可以应用于不同粒度的装配序列，如二进制文件、片段、基本块或函数。我们使用不同的编译器优化选项和混淆技术对汇编代码克隆搜索进行了广泛的实验。我们的结果表明，Asm2Vec 对汇编指令和控制流图的严重变化是准确的和稳健的。</p>
+<h2 id="references">references<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<p><a href="https://blog.csdn.net/weixin_43846270/article/details/109103725">https://blog.csdn.net/weixin_43846270/article/details/109103725</a></p>
+<p><a href="https://www.jianshu.com/p/6cd6fb4ac266">https://www.jianshu.com/p/6cd6fb4ac266</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/303086691">https://zhuanlan.zhihu.com/p/303086691</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/191501086">https://zhuanlan.zhihu.com/p/191501086</a></p>
+<p><a href="https://nankai.feishu.cn/minutes/obcnal4265y49pfwh4y2qn3i">https://nankai.feishu.cn/minutes/obcnal4265y49pfwh4y2qn3i</a></p>
+</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://lxmliu2002.github.io/tags/binary-code-search/">Binary-Code-Search</a></li>
+      <li><a href="https://lxmliu2002.github.io/tags/vulnerability-search/">Vulnerability-Search</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://lxmliu2002.github.io/posts/paperreading_sann/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>PaperReading_SANN</span>
+  </a>
+  <a class="next" href="https://lxmliu2002.github.io/posts/ctf_pwn/">
+    <span class="title">Next »</span>
+    <br>
+    <span>CTF_Pwn</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share PaperReading_Asm2Vec on x"
+            href="https://x.com/intent/tweet/?text=PaperReading_Asm2Vec&amp;url=https%3a%2f%2flxmliu2002.github.io%2fposts%2fpaperreading_asm2vec%2f&amp;hashtags=Binary-Code-Search%2cVulnerability-Search">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share PaperReading_Asm2Vec on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2flxmliu2002.github.io%2fposts%2fpaperreading_asm2vec%2f&amp;title=PaperReading_Asm2Vec&amp;summary=PaperReading_Asm2Vec&amp;source=https%3a%2f%2flxmliu2002.github.io%2fposts%2fpaperreading_asm2vec%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share PaperReading_Asm2Vec on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2flxmliu2002.github.io%2fposts%2fpaperreading_asm2vec%2f&title=PaperReading_Asm2Vec">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share PaperReading_Asm2Vec on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flxmliu2002.github.io%2fposts%2fpaperreading_asm2vec%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share PaperReading_Asm2Vec on whatsapp"
+            href="https://api.whatsapp.com/send?text=PaperReading_Asm2Vec%20-%20https%3a%2f%2flxmliu2002.github.io%2fposts%2fpaperreading_asm2vec%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share PaperReading_Asm2Vec on telegram"
+            href="https://telegram.me/share/url?text=PaperReading_Asm2Vec&amp;url=https%3a%2f%2flxmliu2002.github.io%2fposts%2fpaperreading_asm2vec%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share PaperReading_Asm2Vec on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=PaperReading_Asm2Vec&u=https%3a%2f%2flxmliu2002.github.io%2fposts%2fpaperreading_asm2vec%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/lxmliu2002">lxmliu2002</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

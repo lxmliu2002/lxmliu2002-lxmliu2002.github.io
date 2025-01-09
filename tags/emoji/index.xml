@@ -11,9 +11,9 @@
     <atom:link href="https://lxmliu2002.github.io/tags/emoji/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Emoji Support</title>
-      <link>https://lxmliu2002.github.io/posts/test/</link>
+      <link>https://lxmliu2002.github.io/posts/emoji-support/</link>
       <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>https://lxmliu2002.github.io/posts/test/</guid>
+      <guid>https://lxmliu2002.github.io/posts/emoji-support/</guid>
       <description>Guide to emoji usage in Hugo</description>
     </item>
   </channel>

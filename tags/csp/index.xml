@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CSP on lxmliu2002&#39;s Blog</title>
+    <link>https://lxmliu2002.github.io/tags/csp/</link>
+    <description>Recent content in CSP on lxmliu2002&#39;s Blog</description>
+    <generator>Hugo -- 0.140.2</generator>
+    <language>en</language>
+    <copyright>lxmliu2002</copyright>
+    <lastBuildDate>Wed, 24 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://lxmliu2002.github.io/tags/csp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Compiler &amp; CSP</title>
+      <link>https://lxmliu2002.github.io/posts/compiler--csp/</link>
+      <pubDate>Wed, 24 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/compiler--csp/</guid>
+      <description>CSP 备考的相关知识，与 solidity 智能合约编译过程的研究</description>
+    </item>
+    <item>
+      <title>Hugging Face Dataset &amp; CSP</title>
+      <link>https://lxmliu2002.github.io/posts/hugging-face--csp/</link>
+      <pubDate>Mon, 22 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/hugging-face--csp/</guid>
+      <description>CSP 备考的相关知识，与 MLM 中用到的 Hugging Face 数据集的研究</description>
+    </item>
+  </channel>
+</rss>

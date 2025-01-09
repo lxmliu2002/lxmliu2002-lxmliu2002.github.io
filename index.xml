@@ -7,13 +7,244 @@
     <generator>Hugo -- 0.140.2</generator>
     <language>en</language>
     <copyright>lxmliu2002</copyright>
-    <lastBuildDate>Tue, 05 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://lxmliu2002.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Install / Update PaperMod</title>
+      <link>https://lxmliu2002.github.io/posts/papermod/papermod-installation/</link>
+      <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/papermod/papermod-installation/</guid>
+      <description>Read aboout Install and Update instructions and sampled configuration templates</description>
+    </item>
+    <item>
+      <title>Features / Mods</title>
+      <link>https://lxmliu2002.github.io/posts/papermod/papermod-features/</link>
+      <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/papermod/papermod-features/</guid>
+      <description>Learn About All Features in PaperMod</description>
+    </item>
+    <item>
+      <title>Markdown Syntax Guide For L2</title>
+      <link>https://lxmliu2002.github.io/posts/markdown-syntax.fr/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/markdown-syntax.fr/</guid>
+      <description>Sample article showcasing basic Markdown syntax and formatting for HTML elements.</description>
+    </item>
+    <item>
+      <title>Markdown Syntax Guide For RTL</title>
+      <link>https://lxmliu2002.github.io/posts/markdown-syntax.fa/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/markdown-syntax.fa/</guid>
+      <description>Sample article showcasing basic Markdown syntax and formatting for HTML elements.</description>
+    </item>
+    <item>
+      <title>联邦学习_d1</title>
+      <link>https://lxmliu2002.github.io/posts/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0_d1/</link>
+      <pubDate>Mon, 15 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0_d1/</guid>
+      <description>学习联邦学习</description>
+    </item>
+    <item>
+      <title>PaperReading_How_Machine_Learning_Is_Solving_the_Binary_Function_Similarity_Problem</title>
+      <link>https://lxmliu2002.github.io/posts/paperreading_how_machine_learning_is_solving_the_binary_function_similarity_problem/</link>
+      <pubDate>Mon, 25 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/paperreading_how_machine_learning_is_solving_the_binary_function_similarity_problem/</guid>
+      <description>PaperReading</description>
+    </item>
+    <item>
+      <title>PaperReading_jTrans</title>
+      <link>https://lxmliu2002.github.io/posts/paperreading_jtrans/</link>
+      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/paperreading_jtrans/</guid>
+      <description>PaperReading</description>
+    </item>
+    <item>
+      <title>PaperReading_SANN</title>
+      <link>https://lxmliu2002.github.io/posts/paperreading_sann/</link>
+      <pubDate>Sat, 23 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/paperreading_sann/</guid>
+      <description>PaperReading</description>
+    </item>
+    <item>
+      <title>PaperReading_Asm2Vec</title>
+      <link>https://lxmliu2002.github.io/posts/paperreading_asm2vec/</link>
+      <pubDate>Fri, 22 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/paperreading_asm2vec/</guid>
+      <description>PaperReading</description>
+    </item>
+    <item>
+      <title>CTF_Pwn</title>
+      <link>https://lxmliu2002.github.io/posts/ctf_pwn/</link>
+      <pubDate>Sun, 03 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/ctf_pwn/</guid>
+      <description>CTF 之 Pwn 学习</description>
+    </item>
+    <item>
+      <title>信息隐藏技术_7</title>
+      <link>https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_7/</link>
+      <pubDate>Thu, 29 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_7/</guid>
+      <description>学习信息隐藏技术</description>
+    </item>
+    <item>
+      <title>信息隐藏技术_6</title>
+      <link>https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_6/</link>
+      <pubDate>Wed, 28 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_6/</guid>
+      <description>学习信息隐藏技术</description>
+    </item>
+    <item>
+      <title>信息隐藏技术_5</title>
+      <link>https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_5/</link>
+      <pubDate>Tue, 27 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_5/</guid>
+      <description>学习信息隐藏技术</description>
+    </item>
+    <item>
+      <title>信息隐藏技术_4</title>
+      <link>https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_4/</link>
+      <pubDate>Mon, 26 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_4/</guid>
+      <description>学习信息隐藏技术</description>
+    </item>
+    <item>
+      <title>信息隐藏技术_3</title>
+      <link>https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_3/</link>
+      <pubDate>Fri, 23 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_3/</guid>
+      <description>学习信息隐藏技术</description>
+    </item>
+    <item>
+      <title>信息隐藏技术_2</title>
+      <link>https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_2/</link>
+      <pubDate>Thu, 22 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_2/</guid>
+      <description>学习信息隐藏技术</description>
+    </item>
+    <item>
+      <title>信息隐藏技术_1</title>
+      <link>https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_1/</link>
+      <pubDate>Wed, 21 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_1/</guid>
+      <description>学习信息隐藏技术</description>
+    </item>
+    <item>
+      <title>heimdall-rs</title>
+      <link>https://lxmliu2002.github.io/posts/heimdallrs/</link>
+      <pubDate>Fri, 16 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/heimdallrs/</guid>
+      <description>heimdall-rs 项目分析</description>
+    </item>
+    <item>
+      <title>教资科目二</title>
+      <link>https://lxmliu2002.github.io/posts/%E6%95%99%E8%B5%84%E7%A7%91%E7%9B%AE%E4%BA%8C/</link>
+      <pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/%E6%95%99%E8%B5%84%E7%A7%91%E7%9B%AE%E4%BA%8C/</guid>
+      <description>教资总结</description>
+    </item>
+    <item>
+      <title>教资科目一</title>
+      <link>https://lxmliu2002.github.io/posts/%E6%95%99%E8%B5%84%E7%A7%91%E7%9B%AE%E4%B8%80/</link>
+      <pubDate>Tue, 13 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/%E6%95%99%E8%B5%84%E7%A7%91%E7%9B%AE%E4%B8%80/</guid>
+      <description>教资总结</description>
+    </item>
+    <item>
+      <title>CTF_Web_4</title>
+      <link>https://lxmliu2002.github.io/posts/ctf_web_4/</link>
+      <pubDate>Wed, 07 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/ctf_web_4/</guid>
+      <description>CTF 之 Web 学习</description>
+    </item>
+    <item>
+      <title>CTF_Web_3</title>
+      <link>https://lxmliu2002.github.io/posts/ctf_web_3/</link>
+      <pubDate>Tue, 06 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/ctf_web_3/</guid>
+      <description>CTF 之 Web 学习</description>
+    </item>
+    <item>
+      <title>CTF_Web_2</title>
+      <link>https://lxmliu2002.github.io/posts/ctf_web_2/</link>
+      <pubDate>Sun, 04 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/ctf_web_2/</guid>
+      <description>CTF 之 Web 学习</description>
+    </item>
+    <item>
+      <title>CTF_Web_1</title>
+      <link>https://lxmliu2002.github.io/posts/ctf_web_1/</link>
+      <pubDate>Sat, 03 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/ctf_web_1/</guid>
+      <description>CTF 之 Web 学习</description>
+    </item>
+    <item>
+      <title>CTF_Crypto</title>
+      <link>https://lxmliu2002.github.io/posts/ctf_crypto/</link>
+      <pubDate>Fri, 02 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/ctf_crypto/</guid>
+      <description>CTF 之 Crypto 学习</description>
+    </item>
+    <item>
+      <title>CTF_Misc_2</title>
+      <link>https://lxmliu2002.github.io/posts/ctf_misc_2/</link>
+      <pubDate>Thu, 01 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/ctf_misc_2/</guid>
+      <description>CTF 之 Misc 学习</description>
+    </item>
+    <item>
+      <title>CTF_Misc_1</title>
+      <link>https://lxmliu2002.github.io/posts/ctf_misc_1/</link>
+      <pubDate>Wed, 31 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/ctf_misc_1/</guid>
+      <description>CTF 之 Misc 学习</description>
+    </item>
+    <item>
+      <title>Server</title>
+      <link>https://lxmliu2002.github.io/posts/server/</link>
+      <pubDate>Sat, 27 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/server/</guid>
+      <description>服务器入门</description>
+    </item>
+    <item>
+      <title>Compiler &amp; CSP</title>
+      <link>https://lxmliu2002.github.io/posts/compiler--csp/</link>
+      <pubDate>Wed, 24 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/compiler--csp/</guid>
+      <description>CSP 备考的相关知识，与 solidity 智能合约编译过程的研究</description>
+    </item>
+    <item>
+      <title>Hugging Face Dataset &amp; CSP</title>
+      <link>https://lxmliu2002.github.io/posts/hugging-face--csp/</link>
+      <pubDate>Mon, 22 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/hugging-face--csp/</guid>
+      <description>CSP 备考的相关知识，与 MLM 中用到的 Hugging Face 数据集的研究</description>
+    </item>
+    <item>
+      <title>Markdown Syntax Guide</title>
+      <link>https://lxmliu2002.github.io/posts/markdown-syntax/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/markdown-syntax/</guid>
+      <description>Sample article showcasing basic Markdown syntax and formatting for HTML elements.</description>
+    </item>
+    <item>
+      <title>Code Syntax Guide</title>
+      <link>https://lxmliu2002.github.io/posts/code_syntax/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/code_syntax/</guid>
+      <description>Sample article showcasing basic code syntax and formatting for HTML elements.</description>
+    </item>
+    <item>
+      <title>Math Typesetting</title>
+      <link>https://lxmliu2002.github.io/posts/math-typesetting/</link>
+      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/math-typesetting/</guid>
+      <description>A brief guide to setup KaTeX</description>
+    </item>
+    <item>
       <title>Emoji Support</title>
-      <link>https://lxmliu2002.github.io/posts/test/</link>
+      <link>https://lxmliu2002.github.io/posts/emoji-support/</link>
       <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      <guid>https://lxmliu2002.github.io/posts/test/</guid>
+      <guid>https://lxmliu2002.github.io/posts/emoji-support/</guid>
       <description>Guide to emoji usage in Hugo</description>
     </item>
     <item>

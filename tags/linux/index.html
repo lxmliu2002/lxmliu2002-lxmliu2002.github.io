@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Linux | lxmliu2002&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="lxmliu2002&#39;s Blog">
+<meta name="author" content="lxmliu2002">
+<link rel="canonical" href="https://lxmliu2002.github.io/tags/linux/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css" integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://lxmliu2002.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lxmliu2002.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lxmliu2002.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lxmliu2002.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lxmliu2002.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://lxmliu2002.github.io/tags/linux/index.xml">
+<link rel="alternate" hreflang="en" href="https://lxmliu2002.github.io/tags/linux/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://lxmliu2002.github.io/tags/linux/">
+  <meta property="og:site_name" content="lxmliu2002&#39;s Blog">
+  <meta property="og:title" content="Linux">
+  <meta property="og:description" content="lxmliu2002&#39;s Blog">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux">
+<meta name="twitter:description" content="lxmliu2002&#39;s Blog">
+
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://lxmliu2002.github.io/" accesskey="h" title="lxmliu2002&#39;s Blog (Alt + H)">lxmliu2002&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://lxmliu2002.github.io/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/" title="homepage">
+                    <span>homepage</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://lxmliu2002.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://lxmliu2002.github.io/tags/">Tags</a></div>
+  <h1>
+    Linux
+    <a href="/tags/linux/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CTF_Pwn
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>CTF_Pwn XMCVE 2020 CTF Pwn入门课程
+概述 破解、利用成功（程序的二进制漏洞） 攻破（设备、服务器） 控制（设备、服务器） 名词：
+exploit：用于攻击的脚本与方案 payload：攻击载荷，是对目标进程被劫持控制流的数据 shellcode：调用攻击目标的 shell 的代码 一、二进制基础 程序的编译与链接 编译：由 C 语言代码生成汇编代码
+汇编：由汇编代码生成机器码
+链接：将多个机器码的目标文件链接成一个可执行文件
+Linux 下的可执行文件格式 ELF 分类：
+Windows： 可执行程序：PE 动态链接库：.dll 静态链接库：.lib Linux： 可执行程序：ELF 动态链接库：.so 静态链接库：.a ELF 文件结构：
+ELF 文件头表（ELF header）：记录 ELF 文件的组织结构 程序头表/段表（Program header table）： 告诉系统如何创建进程 生成进程的可执行文件必须拥有此结构 重定位文件不一定需要 节头表（Section header table）： 记录 ELF 文件的节区信息 用于链接的目标文件必须拥有此结构 其他类型目标文件不一定需要 磁盘中的 ELF（可执行文件）与内存中的 ELF（进程内存映像）
+1 2 objdump -s elf # 查看 elf 文件内容 cat /proc/pid/maps # 查看进程结构 进程虚拟地址空间 地址以字节编码，常以 16 进制表示
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-03 00:00:00 +0000 UTC'>March 3, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;lxmliu2002</footer>
+  <a class="entry-link" aria-label="post link to CTF_Pwn" href="https://lxmliu2002.github.io/posts/ctf_pwn/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-04.jpg" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">heimdall-rs
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>heimdall-rs 源代码位于 ~/.bifrost/build/heimdall-rs 下，主要组成部分：
+bifrost ：Bifrost is heimdall’s installer and version manager.
+cache ：This crate is a simple on-disc caching system utilized by the Heimdall library. Heimdall modules may use this library to save immutable on-chain data to disc, such as bytecode, calldata, as well as the results of expensive computations.
+cli ：This crate is a very simple clap-based CLI that allows you to interact with the Heimdall library by wrapping heimdall-core modules.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-02-16 00:00:00 +0000 UTC'>February 16, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;lxmliu2002</footer>
+  <a class="entry-link" aria-label="post link to heimdall-rs" href="https://lxmliu2002.github.io/posts/heimdallrs/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CTF_Web_4
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>CTF_Web_4 2023年我在B站学CTF
+跨站脚本攻击 跨站脚本攻击概念介绍 XSS 全程跨站脚本攻击，是最常见的 Web 应用程序安全漏洞之一。XSS 是指攻击者在网页中嵌入客户端脚本，通常是 JavaScript 编写的危险代码，当用户使用浏览器浏览网页时，脚本就会在用户的浏览器上执行，从而达到攻击者的目的。
+XSS 属于客户端攻击，受害者最终是用户，但特别要注意的是，网站管理人员也属于用户之一，这也就意味着 XSS 可以进行“服务端”攻击，因为管理员要比普通用户的权限大得多，一般管理员都可以对网站进行文件管理、数据管理等操作，而攻击者一般也是靠管理员身份作为“跳板”实施攻击。
+跨站脚本攻击产生的原因 程序对输入输出的控制不够严格，导致“精心构造”的脚本输入后，在输到前端时被浏览器当作有效代码解析执行从而产生危害。
+攻击原理：
+利用原有网站 url 地址获取用户数据信息、cookie、用户登录信息
+利用自己网站 url 地址获取用户数据信息、cookie、用户登录信息
+跨找脚本攻击造成危害 会获取用户 cookie 信息 会让用户数据信息泄露 会获取用户登录信息 会让用户电脑加载木马程序 会记录用户键盘操作行为 跨站脚本攻击分类 反射型 XSS 或不持久型 XSS（中危漏洞） 交互的数据一般不会被存在数据库里，只是简单的把用户输入的数据反射给浏览器，一次性，所见即所得。
+1 2 3 4 &lt;?php $name = $_GET[&#39;name&#39;] echo &#34;Welcome $name&lt;br&gt;&#34;; ?&gt; 攻击过程必须让用户访问指定 url 才能生效，并且访问过程产生的数据不会对服务端造成影响。
+存储性 XSS 或持久型 XSS（高危漏洞） 交互的数据会被存在数据库里，永久性存储，具有很强的稳定性。
+会对访问网站相应页面所有用户造成影响。
+DOM XSS（低危漏洞、中危漏洞） 不与后台服务器产生数据交互，通过前端的 dom 节点形成的 XSS 漏洞。
+会在网站页面生成超链接信息，超链接信息中会自动加载恶意代码，影响客户端。
+跨站脚本攻击存在地方 HTML Context 在 HTML 代码中包含相应 XSS 漏洞代码信息：
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-02-07 00:00:00 +0000 UTC'>February 7, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;lxmliu2002</footer>
+  <a class="entry-link" aria-label="post link to CTF_Web_4" href="https://lxmliu2002.github.io/posts/ctf_web_4/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CTF_Web_3
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>CTF_Web_3 2023年我在B站学CTF
+SSH 私钥泄露 信息探测
+1 2 3 nmap -sV IP # 探测开放服务信息 nmap -A -v IP # 探测靶场全部信息 nmap -O IP # 探测靶场的操作系统类型与版本 分析探测结果
+每个服务对应一个端口，用来进行通信。在扫描结果中查找特殊端口（大于 1024 的端口），针对特殊端口进行探测，尤其对开放大端口的 http 服务进行排查。
+对于 ssh 服务的 22 端口的靶场
+暴力破解 私钥泄露 对于开放 http 服务的 80 端口或其他端口的靶场
+对于开放的 http 服务的大端口，可以采用 http://ip:port/ 的形式访问
+查看源代码获取对应信息，如果没有 flag 信息，使用工具探测隐藏页面
+1 dirb http://ip:port/ # 对这个服务的隐藏文件进行探测 直接使用浏览器访问，查看效果、对应源代码，可能获取到 flag 或下一步对应的提示
+挖掘 ssh 信息，不断访问获取更多泄露的 ssh 密钥信息
+1 2 url/.ssh/id_rsa # 得到私钥 url/.ssh/&lt;id_rsa&gt; # 得到认证关键字文件 解密 ssh 密钥信息
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-02-06 00:00:00 +0000 UTC'>February 6, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;lxmliu2002</footer>
+  <a class="entry-link" aria-label="post link to CTF_Web_3" href="https://lxmliu2002.github.io/posts/ctf_web_3/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CTF_Web_2
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>CTF_Web_2 2023年我在B站学CTF
+MySql 基础 SQL 注入 SQL 注入是一种将 SQL 代码插入或添加到应用的输入参数中的攻击，之后再将这些参数传递给后台的 SQL 服务器加以解析并执行。攻击者把 SQL 命令语句作为输入被服务器 SQL 解释器正确解析执行，数据库把查询到的结果返回给服务器，然后呈现给攻击者，攻击者由此获得数据库内的数据信息。
+产生条件：用户控制了 SQL 语句的一部分，用户的输入不再是一个输入参数，而成为了符合语法的 SQL 语句。
+有回显 联合查询 -&gt; 构造联合查询语句，直接查看查询结果 报错注入 -&gt; 构造报错语句，在报错中查看结果 堆查询 -&gt; 多行语句执行，今儿实现想要达到的目的 无回显 盲注 -&gt; 布尔型 / 时间型 通过某种手段“爆破”结果 联合查询注入的利用 猜测是否存在注入
+猜解 SQL 查询语句中的字段数
+1 order by 1 / 2 / 3 ... 确定显示的字段顺序：使用 union，查看每个数字出现的位置，以此确定显示的字段顺序。
+1 1&#39; union select 1, 2 # 获取当前数据库名
+1 1&#39; union select 1, database( #) 获取当前数据库的表名
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-02-04 00:00:00 +0000 UTC'>February 4, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;lxmliu2002</footer>
+  <a class="entry-link" aria-label="post link to CTF_Web_2" href="https://lxmliu2002.github.io/posts/ctf_web_2/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://lxmliu2002.github.io/tags/linux/page/2/">Next&nbsp;2/2&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/lxmliu2002">lxmliu2002</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

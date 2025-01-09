@@ -7,6 +7,21 @@
     <generator>Hugo -- 0.140.2</generator>
     <language>en</language>
     <copyright>lxmliu2002</copyright>
+    <lastBuildDate>Wed, 20 Jan 2021 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://lxmliu2002.github.io/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PaperMod</title>
+      <link>https://lxmliu2002.github.io/series/papermod/</link>
+      <pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/series/papermod/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Themes Guide</title>
+      <link>https://lxmliu2002.github.io/series/themes-guide/</link>
+      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/series/themes-guide/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

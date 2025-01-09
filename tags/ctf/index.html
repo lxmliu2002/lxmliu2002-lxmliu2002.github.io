@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>CTF | lxmliu2002&#39;s Blog</title>
+<meta name="keywords" content="">
+<meta name="description" content="lxmliu2002&#39;s Blog">
+<meta name="author" content="lxmliu2002">
+<link rel="canonical" href="https://lxmliu2002.github.io/tags/ctf/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css" integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://lxmliu2002.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lxmliu2002.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lxmliu2002.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lxmliu2002.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lxmliu2002.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://lxmliu2002.github.io/tags/ctf/index.xml">
+<link rel="alternate" hreflang="en" href="https://lxmliu2002.github.io/tags/ctf/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://lxmliu2002.github.io/tags/ctf/">
+  <meta property="og:site_name" content="lxmliu2002&#39;s Blog">
+  <meta property="og:title" content="CTF">
+  <meta property="og:description" content="lxmliu2002&#39;s Blog">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CTF">
+<meta name="twitter:description" content="lxmliu2002&#39;s Blog">
+
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://lxmliu2002.github.io/" accesskey="h" title="lxmliu2002&#39;s Blog (Alt + H)">lxmliu2002&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://lxmliu2002.github.io/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/" title="homepage">
+                    <span>homepage</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://lxmliu2002.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://lxmliu2002.github.io/tags/">Tags</a></div>
+  <h1>
+    CTF
+    <a href="/tags/ctf/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+  </h1>
+</header>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-ctf.png" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CTF_Pwn
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>CTF_Pwn XMCVE 2020 CTF Pwn入门课程
+概述 破解、利用成功（程序的二进制漏洞） 攻破（设备、服务器） 控制（设备、服务器） 名词：
+exploit：用于攻击的脚本与方案 payload：攻击载荷，是对目标进程被劫持控制流的数据 shellcode：调用攻击目标的 shell 的代码 一、二进制基础 程序的编译与链接 编译：由 C 语言代码生成汇编代码
+汇编：由汇编代码生成机器码
+链接：将多个机器码的目标文件链接成一个可执行文件
+Linux 下的可执行文件格式 ELF 分类：
+Windows： 可执行程序：PE 动态链接库：.dll 静态链接库：.lib Linux： 可执行程序：ELF 动态链接库：.so 静态链接库：.a ELF 文件结构：
+ELF 文件头表（ELF header）：记录 ELF 文件的组织结构 程序头表/段表（Program header table）： 告诉系统如何创建进程 生成进程的可执行文件必须拥有此结构 重定位文件不一定需要 节头表（Section header table）： 记录 ELF 文件的节区信息 用于链接的目标文件必须拥有此结构 其他类型目标文件不一定需要 磁盘中的 ELF（可执行文件）与内存中的 ELF（进程内存映像）
+1 2 objdump -s elf # 查看 elf 文件内容 cat /proc/pid/maps # 查看进程结构 进程虚拟地址空间 地址以字节编码，常以 16 进制表示
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-03 00:00:00 +0000 UTC'>March 3, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;lxmliu2002</footer>
+  <a class="entry-link" aria-label="post link to CTF_Pwn" href="https://lxmliu2002.github.io/posts/ctf_pwn/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-information_hiding.jpg" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">信息隐藏技术_7
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>七、数字水印技术 7.1 数字水印的形成和产生 数字水印的形式：
+一串有意义的字符 标注作品的所有者、创作日期、发行部门以及其他需要标注的信息，它们可以是明文字符，将这些字符串以比特流的形式嵌入数字作品中。 在提取水印时，按照提取算法提取出这些比特流，转换成字符串，就可以得到需要的水印信息。 在以明文字符做数字水印的情况下，需要考虑水印的稳健性。一般在将字符串作为水印嵌入数字作品之前，需要将水印首先进行纠错编码，对水印增加一些冗余度，使得它可以纠正由于一些小的误差引起的字符错误。 这一类数字水印，从水印形式上说，是稳健性较差的水印。 一串伪随机序列 克服了第一类水印的缺点，它不是直接将明文字符作为水印，而是将需要标识的信息与一个伪随机序列串对应起来。将伪随机数作为数字水印嵌入数字作品中。 在需要验证作品的所有权问题时，用相应的水印提取算法提取出数字水印，这时提取出的数字水印不需要与原来的水印完全一样，通过相关性检测就可以判断有没有水印存在。如果相关性很高，可以判断提取出的水印与原来的水印很相似，也就是存在水印。 利用相关性检测的水印，从水印的格式上来说，是稳健性比较好的水印。 一个可视的图片 第三类数字水印是一种可视图像，它可以是一个人的手写签名或者是一些字符，也可以是一个徽标****，以二值图像**（或灰度图像）的形式保存。 将这些二值图像（或灰度图像）变为比特串，作为数字水印嵌入作品中。水印提取时，也是提取这些比特串，并把它们复原成原图像。 在误码不是很大的情况下，它们所组成的二值图像仍然能够通过人眼来识别。 这一类水印主要是利用人眼的视觉冗余性，它可以容忍较大的比特误码。也是稳健性比较好的水印。 水印的稳健性：
+选择水印时应该考虑水印本身能够容忍一定的误码，比如第二类和第三类水印 设计水印算法时，要考虑水印算法的抗攻击能力，同时还要考虑水印检测方式 7.2 数字水印框架 数字水印的框架结构由两部分组成：
+水印嵌入过程
+$CPP$：对被保护的数字产品进行的预处理 $WPP$：对数字水印 $W$ 进行的预处理 $G$：数字水印嵌入算法 $CPP^{-1}$：$CPP$ 的逆操作 $C$：被保护的数字产品 $W$：水印信息 $K$：数字水印嵌入算法的密钥 $C_W$：嵌入数字水印后的数字产品 水印提取过程
+$D$：数字水印提取算法 $WRP$：对直接提取水印的算法，就是 $WPP$ 的逆操作。对判断绝对存在与否的算法，就是数字水印的判决算法 提取过程的两种输出： 直接提取水印 判断水印是否存在 提取过程中是否需要原始载体取决于嵌入算法 根据预处理的不同，水印方案可以分为：
+空间域水印（预处理为空操作） 变换域水印（预处理为各种变换） 水印算法设计的原则：
+稳健性 抵抗各种攻击 寻找不变量 7.3 图像数字水印技术 7.3.1 水印嵌入位置的选择 安全性问题：嵌入的水印不能被非法使用者轻易地提取出来，或者被轻易地擦除 对载体质量的影响问题：不能影响数字载体的使用，嵌入水印引起的失真，应该对人类的感观是不可察觉的 水印位置的选择：根据 Kerckhoffs 准则，一个安全的数字水印，其算法应该是公开的，其安全性应该建立在密钥的保密性的基础上，而不是算法是保密性上。为了防止水印被偶尔移去，或者被直截了当地提取出水印，可以采用选择水印在载体中嵌入的位置来达到目的。除了安全性方面，水印嵌入位置的选择对于载体的感观失真也起到了关键的作用。比如，人类视觉系统的敏感度随着图像纹理特征的变化而改变，因此需要考虑水印位置选择所引起的心理视觉问题。
+”拼凑“算法：根据密钥随机选择 n 哥像素对，更改它们的亮度值。$\widetilde{a_i}=a_i&#43;1 \ \ \widetilde{b_i}=b_i-1$。在提取时，计算 $s=\Sigma^{n}_{i=1}(\widetilde{a_i}-\widetilde{b_i})$。如果这个载体确实包含了水印，可以预计这个和为 2n，否则将近似为零。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-02-29 00:00:00 +0000 UTC'>February 29, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;lxmliu2002</footer>
+  <a class="entry-link" aria-label="post link to 信息隐藏技术_7" href="https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_7/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-information_hiding.jpg" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">信息隐藏技术_6
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>六、数字水印与版权保护 6.1 数字水印提出的背景 数字产品的版权保护问题。
+密码技术的解决方案：依靠密码学技术对数字产品进行加密，只有合法用户（或付费用户）才拥有密钥，这样可以保证数字产品内容的安全传送，并且可以作为存取控制和征收费用的手段。
+问题：所加密的数字内容在解密之后，就没有有效的手段来保证其不被非法复制、再次传播和盗用。 数字水印的提出：数字水印是在数字多媒体载体中隐藏一些信息，包括数字作品的版权所有者、发行者、购买者、日期、序列号等。目的不是为了秘密传递这些信息，而是在检查盗版行为时，可以从数字载体中提取出有关信息，用以证明数字产品的版权，指正盗版行为。
+数字水印是信息隐藏的一个最重要的分支，可以为各种数字多媒体产品提供一种可行的版权保护措施。
+信息隐藏与数字水印的区别：
+信息隐藏 数字水印 用途 保密通信 版权标识 前提 一般不知有信息隐藏 可以公开有水印存在 精确恢复 是 否 主要攻击 隐写分析 水印擦除 主要考核 透明性 鲁棒性 6.2 数字水印的定义 数字水印是永久镶嵌在其他数据（宿主数据）中具有可鉴别性的数字信号或模式，并且不影响宿主数据的可用性。
+特点：
+安全性：数字水印难以被发现、擦除、篡改或伪造，同时要有较低的虚警率
+可证明性：数字水印应能为宿主数据的产品归属问题提供完全和可靠的证据
+不可感知性：从感观上和统计上都不可感知
+稳健性：数字水印应该难以被擦除，任何视图完全破坏水印的努力将对载体的质量产生严重破坏。
+好的水印算法应该对信号处理、几何变形、恶意攻击等具有稳健性
+衡量水印算法稳健性的处理 数据压缩处理：图像、声音、视频等信号的压缩算法是去掉这些信号中的冗余信息。通常，水印的不可感知性就是采用将水印信息嵌入在载体中对感知不敏感的部位，而这些不敏感的部位经常是被压缩算法所去掉的部分。 滤波、平滑处理：水印应该具有低通特性，低通滤波和平滑处理应该无法删除水印。 量化与增强：水印应该能够抵抗对载体信号的 A/D 转换、D/A 转换、重采样等处理，还有一些常规的图像操作，如图像在不同灰度级上的量化、亮度与对比度的变化、图像增强等，都不应该对水印产生严重的影响。 几何失真：几何失真包括图像尺寸大小变化、图像旋转、裁剪、删除或添加等。 数字水印三要素：
+水印本身的结构
+版权所有者、合法使用者、日期等具体信息 伪随机序列 水印的加载过程
+1 2 3 4 5 用户密钥 ------------ | 无水印的输入图像 --------------&gt; 数字水印插入算法 -------&gt; 有水印的输出图像 | 数字水印 ------------ 设 $I$ 为数字图像，$W$ 为水印信号，$K$ 为密钥，处理后的水印 $\widetilde{W}$ 由函数 $F$ 定义为 $\widetilde{W}=F(I,W,K)$
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-02-28 00:00:00 +0000 UTC'>February 28, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;lxmliu2002</footer>
+  <a class="entry-link" aria-label="post link to 信息隐藏技术_6" href="https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_6/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-information_hiding.jpg" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">信息隐藏技术_5
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>五、图像信息隐藏 5.1 图像的位平面 5.1.1 图像的位平面概念 数字图像中用来隐藏信息的位置：
+主要考察像素的各个比特对图像的贡献：
+贡献大的保留 贡献微弱的则可用于隐藏秘密信息的比特 图像的位平面概念：
+图像的数据表示：
+8bit / 像素：256 色（0~255）
+各像素位置相同的位形成一个平面，称为“位平面”
+不同位平面的重要程度不同
+高位：图像信息
+低位：噪声
+人眼对随机噪声不敏感
+5.1.2 位平面分解 位平面算法：
+相关函数
+获取图像 x 的行数和列数：[m, n] = size(x) 提取 A 的第 bit 位的值：C = bitget(A, bit) 将 A 的第 bit 位的值设为 v（v 的取值为 0 或 1）：C = bitset(A, bit, v) 提取第一位平面
+1 2 3 4 5 6 7 8 9 10 x = imread(&#39;lenagray.bmp&#39;); [m, n] = size(x); for i = 1:m for j = 1:n c(i, j) = bitget(x(i, j), 1); end end figure; imshow(c, []); title(&#39;第一位平面&#39;); 依次提取 1~8 个位平面
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-02-27 00:00:00 +0000 UTC'>February 27, 2024</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;lxmliu2002</footer>
+  <a class="entry-link" aria-label="post link to 信息隐藏技术_5" href="https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_5/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-information_hiding.jpg" alt="">
+</figure>
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">信息隐藏技术_4
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>四、音频信息隐藏 4.1 音频隐藏的基本原理 在各种载体中有很多方法可以用于隐藏信息，其中最直观的一种是替换技术。任何数字多媒体信息，在扫描和采样时，都会产生屋里随机噪声，而人的感观系统对这些随机噪声是不敏感的。替换技术就是利用这个原理，视图用秘密信息比特替换掉随机噪声，以达到隐藏秘密信息的目的。
+音频信号的特点：一维信号，人耳听觉系统（HAS）比人眼视觉系统（HVS）灵敏得多。
+对音频信息隐藏技术的要求：
+透明性 鲁棒性（强鲁棒，抗模数转换） 同步 盲检测 数字化音频中，低有效比特对音质贡献弱，改变低有效比特不会显著影响音质。
+4.2 LSB 音频隐藏算法 符号规定：
+$c_i$：载体对象的取样值
+$s_i$：伪装对象的取样值
+$L(c)$：载体的长度
+$k$：伪装密钥
+$L(m)$：秘密信息的长度
+流载体的 LSB 方法：
+嵌入：选择一个载体元素的子集 ${j_1,j_2,…,j_{L(m)}}$ ，其中共有 $L(m)$ 个元素，用以隐藏秘密信息的 $L(m)$ 个比特。然后在这个子集上执行替换操作，把 $c_{j_i}$ 的最低比特用 $m_i$ 来替换。 提取：找到嵌入信息的伪装元素的子集 ${j_1,j_2,…,j_{L(m)}}$，从这些伪装对象 $S_{j_i}$ 中抽出它们的最低比特位，排列之后组成秘密信息 $m$。 如何选择隐藏位置子集？
+顺序选取：发送者从载体的第一个元素开始，顺序选取 $L(m)$ 个元素作为隐藏的子集 确定：已经嵌入部分和未嵌入部分数据特征不同 随机间隔：用伪装密钥 $k$ 作为 伪随机数发生器的种子，生成一个伪随机序列 $k_1,k_2,…,k_{L(m)}$，则嵌入位置为 $j_1=k_1,k_i=j_{i-1}&#43;k_i(i\ge2)$ LSB 算法：
+算法实现 嵌入：水印替换最低（或次低）比特 提取：提取最低（或次低）比特组合为水印 算法设计 选择样点：样点幅值大小与其掩蔽能力有关，静音段（幅值较小）的样点不宜用于隐藏 选择比特位：低比特位对音质影响小，但容易受到干扰 算法性能 透明度高 容量大 鲁棒性差 4.3 回声隐藏算法 回声隐藏算法：
+方法：在数字声音信号中引入回声，可根据引入回声的位置不同来隐藏秘密信息 原理——遮蔽效应：强信号的存在会使其附近的弱信号难以被感知。人耳对一个较强声音后的极短时间内的较弱声音的不可察觉性。当回声与原声的间隔充分接近时，人耳难以区别回声和原声。 如何利用掩蔽效应隐藏信息？
+回声和原声间的延迟在一定范围内人耳都难以察觉，亦即可以认为添加不同延迟的回声 隐藏二进制信息，只需要用两种不同延迟的回声分别代表 0、1 比特。 回声隐藏算法：音频信号和经过回声隐藏的携密数据对人耳来说，前者就像是从耳机中听到的声音，没有回声。而后者就像是从扬声器里听到的声音，有所处空间诸如墙壁、家具等物体产生的回声。回声隐藏巧妙地利用人类听觉系统（HAS）的时域掩蔽特性，通过向音频信号中引入回声来完成隐藏秘密信息的一种技术方法。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-02-26 00:00:00 +0000 UTC'>February 26, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;lxmliu2002</footer>
+  <a class="entry-link" aria-label="post link to 信息隐藏技术_4" href="https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_4/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="https://lxmliu2002.github.io/tags/ctf/page/2/">Next&nbsp;2/3&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/lxmliu2002">lxmliu2002</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

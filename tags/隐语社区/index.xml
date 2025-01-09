@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>隐语社区 on lxmliu2002&#39;s Blog</title>
+    <link>https://lxmliu2002.github.io/tags/%E9%9A%90%E8%AF%AD%E7%A4%BE%E5%8C%BA/</link>
+    <description>Recent content in 隐语社区 on lxmliu2002&#39;s Blog</description>
+    <generator>Hugo -- 0.140.2</generator>
+    <language>en</language>
+    <copyright>lxmliu2002</copyright>
+    <lastBuildDate>Mon, 15 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://lxmliu2002.github.io/tags/%E9%9A%90%E8%AF%AD%E7%A4%BE%E5%8C%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>联邦学习_d1</title>
+      <link>https://lxmliu2002.github.io/posts/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0_d1/</link>
+      <pubDate>Mon, 15 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://lxmliu2002.github.io/posts/%E8%81%94%E9%82%A6%E5%AD%A6%E4%B9%A0_d1/</guid>
+      <description>学习联邦学习</description>
+    </item>
+  </channel>
+</rss>

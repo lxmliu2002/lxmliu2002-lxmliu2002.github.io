@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>信息隐藏技术_4 | lxmliu2002&#39;s Blog</title>
+<meta name="keywords" content="CTF, 信息隐藏技术">
+<meta name="description" content="学习信息隐藏技术">
+<meta name="author" content="lxmliu2002">
+<link rel="canonical" href="https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_4/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css" integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://lxmliu2002.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lxmliu2002.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lxmliu2002.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lxmliu2002.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lxmliu2002.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_4/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_4/">
+  <meta property="og:site_name" content="lxmliu2002&#39;s Blog">
+  <meta property="og:title" content="信息隐藏技术_4">
+  <meta property="og:description" content="学习信息隐藏技术">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-02-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-02-26T00:00:00+00:00">
+    <meta property="article:tag" content="CTF">
+    <meta property="article:tag" content="信息隐藏技术">
+    <meta property="og:image" content="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-information_hiding.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-information_hiding.jpg">
+<meta name="twitter:title" content="信息隐藏技术_4">
+<meta name="twitter:description" content="学习信息隐藏技术">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://lxmliu2002.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "信息隐藏技术_4",
+      "item": "https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_4/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "信息隐藏技术_4",
+  "name": "信息隐藏技术_4",
+  "description": "学习信息隐藏技术",
+  "keywords": [
+    "CTF", "信息隐藏技术"
+  ],
+  "articleBody": "四、音频信息隐藏 4.1 音频隐藏的基本原理 在各种载体中有很多方法可以用于隐藏信息，其中最直观的一种是替换技术。任何数字多媒体信息，在扫描和采样时，都会产生屋里随机噪声，而人的感观系统对这些随机噪声是不敏感的。替换技术就是利用这个原理，视图用秘密信息比特替换掉随机噪声，以达到隐藏秘密信息的目的。\n音频信号的特点：一维信号，人耳听觉系统（HAS）比人眼视觉系统（HVS）灵敏得多。\n对音频信息隐藏技术的要求：\n透明性 鲁棒性（强鲁棒，抗模数转换） 同步 盲检测 数字化音频中，低有效比特对音质贡献弱，改变低有效比特不会显著影响音质。\n4.2 LSB 音频隐藏算法 符号规定：\n$c_i$：载体对象的取样值\n$s_i$：伪装对象的取样值\n$L(c)$：载体的长度\n$k$：伪装密钥\n$L(m)$：秘密信息的长度\n流载体的 LSB 方法：\n嵌入：选择一个载体元素的子集 ${j_1,j_2,…,j_{L(m)}}$ ，其中共有 $L(m)$ 个元素，用以隐藏秘密信息的 $L(m)$ 个比特。然后在这个子集上执行替换操作，把 $c_{j_i}$ 的最低比特用 $m_i$ 来替换。 提取：找到嵌入信息的伪装元素的子集 ${j_1,j_2,…,j_{L(m)}}$，从这些伪装对象 $S_{j_i}$ 中抽出它们的最低比特位，排列之后组成秘密信息 $m$。 如何选择隐藏位置子集？\n顺序选取：发送者从载体的第一个元素开始，顺序选取 $L(m)$ 个元素作为隐藏的子集 确定：已经嵌入部分和未嵌入部分数据特征不同 随机间隔：用伪装密钥 $k$ 作为 伪随机数发生器的种子，生成一个伪随机序列 $k_1,k_2,…,k_{L(m)}$，则嵌入位置为 $j_1=k_1,k_i=j_{i-1}+k_i(i\\ge2)$ LSB 算法：\n算法实现 嵌入：水印替换最低（或次低）比特 提取：提取最低（或次低）比特组合为水印 算法设计 选择样点：样点幅值大小与其掩蔽能力有关，静音段（幅值较小）的样点不宜用于隐藏 选择比特位：低比特位对音质影响小，但容易受到干扰 算法性能 透明度高 容量大 鲁棒性差 4.3 回声隐藏算法 回声隐藏算法：\n方法：在数字声音信号中引入回声，可根据引入回声的位置不同来隐藏秘密信息 原理——遮蔽效应：强信号的存在会使其附近的弱信号难以被感知。人耳对一个较强声音后的极短时间内的较弱声音的不可察觉性。当回声与原声的间隔充分接近时，人耳难以区别回声和原声。 如何利用掩蔽效应隐藏信息？\n回声和原声间的延迟在一定范围内人耳都难以察觉，亦即可以认为添加不同延迟的回声 隐藏二进制信息，只需要用两种不同延迟的回声分别代表 0、1 比特。 回声隐藏算法：音频信号和经过回声隐藏的携密数据对人耳来说，前者就像是从耳机中听到的声音，没有回声。而后者就像是从扬声器里听到的声音，有所处空间诸如墙壁、家具等物体产生的回声。回声隐藏巧妙地利用人类听觉系统（HAS）的时域掩蔽特性，通过向音频信号中引入回声来完成隐藏秘密信息的一种技术方法。\n嵌入 原始信号 $f(t)$，回声信号 $f(t-\\Delta t)$ 伪装信号为 $c(t)=f(t)+\\alpha f(t-\\Delta t)$，衰减为 $\\alpha$ 秘密信息为 0，延迟为 $\\Delta t$ 秘密信息为 1，延迟为 $\\Delta t'$ 将信号分段，每段隐藏一比特，即可实现隐藏多个秘密信息比特 提取 同步：对每段信号求自相关函数，自相关函数峰值出现的伪位置就代表了秘密信息比特 生成回声信号：回声信号，可简单模拟为原始信号经过时延和幅度衰减后产生的信号 设原信号为 $x(t)$，时延为 $\\delta$，衰减为 $\\alpha$，则叠加回声的信号为 $y(t)=x(t)+\\alpha x(t-\\delta)$ 回声的数字音频信号可表示为：$y[n]=s[n]+\\alpha \\times s[n-\\delta]$，其中，$y[n]$是加入回声后的音频信号，$s[n]$ 是原始音频信号，$\\alpha$ 为回声的幅度系数，$\\delta$ 为时延参数。$\\alpha$ 为 0~1 之间的正数，$\\delta$ 一般表示回声信号滞后与原始信号的样点间隔。 由 HAS 的时域后掩蔽特性可知，对于回声时延的大小是由限制的。一般情况下，回声时延 $\\delta$ 的取值一般在 50200ms 之间。过小会增加嵌入信息恢复的难度，过大则会影响隐藏信号的不可感知性。同时，回声的幅度系数 $alpha$ 的取值也同样需要精心选择，其值与信号传输环境和时延取值有关，一般 $\\alpha$ 取值在 0.60.9 之间。 具体实现方法： 隐藏算法 首先将音频采样数据文件分成包含 N 个样点的子帧，子帧的时长可以根据隐藏数据量的大小划分，一般时长从几个毫秒到几十毫秒，每个子帧隐藏一个比特的秘密信息。 定义两种不同的回声时延$m_0、m_1$（其中，$m_0、m_1$ 均要求远小于子帧时长 N），分别对应秘密信号比特值为 0 和 1。 提取算法：回声隐藏算法的最大难点在于秘密信号的提取，其关键在于回声间距的确定。由于回升信号是载体音频信号和引入回声信号的卷积，因此在提取时，需要利用语音信号处理中的同态处理技术，利用倒谱相关测定回声间距。在进行提取时，必须要确定数据的起点并预先得到子帧的长度、时延 $m_0、m_1$ 等参数值。 将接收到的数据按照预定的时长划分为子帧 求出各段的倒谱自相关值，比较 $m_0、m_1$ 处的自相关幅度 $F_0$ 和 $F_1$。 如果 $F_0$ 大于 $F_1$，则嵌入比特值为 0 如果 $F_0$ 小于 $F_1$，则嵌入比特值为 1 4.4 MP3 音频的编码与解码 MP3 编码算法：\n1 2 3 4 5 6 7 PCM 数据 MP3 码流 ---------\u003e 子带滤 -\u003e MDCT -\u003e 比特和比 -\u003e 哈夫曼编码 -\u003e 帧数据 --------\u003e | 波数组 例因子分配 流生成 | ^ ^ | | | | | | ----------------\u003e 心理声学模型 辅助数据 MP3 编码算法流程大致可以分为四部分：时频映射、心理声学模型、量化编码、帧数据流格式化。其中时频映射部分包括子带滤波器组和 MDCT（修正的离散余弦变换），量化编码包括比特和比特因子比例和哈夫曼编码。输入 PCM 音频数据是按帧进行处理的，每帧包括 1152 个 PCM 样值，而每帧又分为两个颗粒，也就是每个颗粒包含 576 个 PCM 样值。\nMP3 的压缩算法实质上属于有损压缩，而对于人耳来说，MP3 的压缩算法属于无损压缩。这里应用的理论基础是人耳的听觉系统的掩蔽效应。为了应用频域掩蔽效应，需对每颗粒的 576 个 PCM 样值作时频变换，首先将 PCM 样值送入子带滤波器组，经子带滤波器组均匀地分为 32 个子带信号，每个子带包含 18 个样值，然后再对各子带作 MDCT 变换，从而得到 576 个等间隔的频域样值。\n经时频变换后得到的左右声道频域样值需根据所要求的模式进行声道模式处理，MP3 标准提供了五种声道模型：\n单声道模型：只有一个声道的模式 双声道模型：具有两个相互独立声道的模型 立体声模式：具有两个声道且两个声道之间有一定关联的模式 强度立体声模式：在立体声模式的基础上，对某些比例因子带的样值，仅对左右声道之和以及子带能量进行编码以获取更高的压缩率 和差立体声模式：对左右声道频域样值的和值及差值分别进行编码的立体声模式 频域样值经模式处理后，就进行量化和编码。所采用的是非均匀量化，量化过程处于两重迭代循环中，而且每循环一次都要对每个频域样值执行一次量化，计算量较大，对量化的结果进行哈夫曼编码，这样会增加算法的复杂度，但可以利用信号的统计hi特性提高压缩率。这也是 MP3 压缩算法的层 Ⅲ 与层 Ⅱ 的主要区别之一。\n量化是在心理声学模型的控制下进行的，原始 PCM 音频数据分为两路，一路进入子带滤波器组，另一路进入心理声学模型。心理声学模型是对掩蔽效应的具体应用：首先对 PCM 样值做 1024 点 FFT 运算，然后对音频数据的频域特性进行分析，依据已预先建立起来的统计模型数据求出各个比例因子带的信号掩蔽比，并以此指导频域样值的量化，使得量化噪声尽可能地分配在不易被觉察的频带。\n最后一步是帧数据流格式化，把比特流打包形成 MP3 码流。也就是按照 MP3 标准所规定的码流格式，把帧头、纠错码、边信息、主数据、附加数据等有关信息组合成适合于解码的帧。\nMP3 解码算法：\n解码是编码的逆过程\n1 2 3 4 PCM 信号重建 标准比特流输入 数字音频信号 开始 ------------\u003e 比特流按帧 -\u003e 哈夫曼解码 -\u003e 频增值的 -\u003e MDCT -\u003e 合成滤波器 -----------\u003e 结束 解位并延迟 逆量化 逆变换 首先查到每一帧头信息中的同步码，使数据流能够同步，同时分析头信息，得出采样率、比特率及声音模式等消息。 读取该帧的边信息，解出解码所需的各辅助参数（即哈夫曼码本的选择信息、比特分配信息等），并存储下来 根据边信息中 main-data-end 参数找到该帧的主数据的位置（某一帧的主数据不一定紧跟在该帧边信息之后），由主数据解得缩放因子数据和哈夫曼码字 根据边信息中哈夫曼码本的选择信息解出频域量化样值；最后通过逆量化、混叠处理、IMDCT 和合成滤波器重建数字音频信号 分类：\n压缩编码前嵌入 压缩编码中嵌入 压缩编码后嵌入 4.5 基于 MIDI 信息隐藏 MIDI 是乐器数字接口，也是一种专用于乐器的接口标准。一个标准 MIDI 文件基本上是由头块和音轨块两部分组成：\n头块：用来描述整个 MDI 文件基本信息\n标识符串（4 字节） MThd 头块数据区长度（4 字节） 00 00 00 06 头块数据区（6 字节） ff ff nn nn dd dd 音轨块：包含一系列由 MIDI 消息构成的 MIDI 数据流\n标识符串（4 字节） MTrk 音轨块数据区长度（4 字节） 单位位字节 音轨块数据区（6 字节） 由多个 MIDI 事件构成 每一个 MIDI 事件的构成：MIDI 事件 = 采用可变长编码，决定 MIDI 消息被执行的时间 一个 MIDI 消息是由一个状态字节及多个数据字节构成，分为通道消息、系统消息 通道消息：对单一的 MIDI Channel 起作用，其 Channel 是利用状态字节的低 4 位来表示，可从 0 到 15 共有 16 个 Channel。通道消息分为声音消息和模式消息 声音消息用于控制合成器的声音产生 模式消息则为最多达 16 条通道分配声音关系，包括设定单音模式或复音模式 系统消息：应用于整个系统而不是特定通道，并且不含有任何通道码。 公共消息：提供选择歌曲、用拍子数来设定歌曲位置指针，及想合成器发出旋律请求的功能 实时消息：设定系统的实时参数，包括时钟、启动、停止定序器、从停止位置恢复定序器和系统复位 专用消息：包含了厂商特定的数据，如标识、系列号、模型号及其他消息 MIDI 数字水印算法原理：MIDI 文件的声音消息\n声音消息 功能描述 数字字节描述 80-8F 声音关闭 1 字节：音符号；2 字节：音速 90-9F 声音开启 1 字节：音符号；2 字节：音速 A0-AF 音键压力 1 字节：音符号；2 字节：键压力 B0-BF 控制变化 1 字节：控制器号（0-121）；2 字节：控制值 C0-CF 改变乐器 1 字节：乐器编号 D0-DF 通道触动压力 1 字节：压力 E0-EF 音调轮变化 1 字节：弯音轮变换值的低字节；2 字节：弯音轮变换值的高字节 改变 MIDI 音乐文件的部分声音消息并不影响 MIDI 文件的听觉效果，改变声音开启的最低位比特、乐器编号的最低位比特、通道触动压力的低 4 比特位都不会引起听觉差异，因为可在这三种声音消息中嵌入水印消息。\n拓展频谱技术：信号在大于所需的带宽内进行传输，数据的带宽扩展时通过一个与数据独立的码字完成的，并且在接收端需要该码字的一个同步接收，以进行解扩和数据恢复。\n扩频信号的特点是，信号占据很宽的频带，在每一个频段上的信号能量很低，尽管整个信号的能量可以很高。即使部分信号在几个频段丢失，其他频段仍有足够的信息可以用来恢复信号。而利用不同的、相互正交的扩频码，可以在一个很宽的频带内同时传输很多路信号，它们之间互相正交，不会产生干扰。而且每个频段的信号能量很低，信噪比很小，可以认为是淹没在信道噪声中的。因此这种通信技术的又是是拦截概率小，抗干扰能力强，检测和删除一个扩频信号是很困难的。\n扩频信号的概念可以应用到伪装通信系统中来，伪装系统就是试图将秘密信息扩展在整个载体中，以达到不可察觉的目的，并且删除一小部分载体，也很难删除整个信息。\n",
+  "wordCount" : "426",
+  "inLanguage": "en",
+  "image":"https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-information_hiding.jpg","datePublished": "2024-02-26T00:00:00Z",
+  "dateModified": "2024-02-26T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "lxmliu2002"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_4/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "lxmliu2002's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lxmliu2002.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://lxmliu2002.github.io/" accesskey="h" title="lxmliu2002&#39;s Blog (Alt + H)">lxmliu2002&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://lxmliu2002.github.io/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lxmliu2002.github.io/" title="homepage">
+                    <span>homepage</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://lxmliu2002.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://lxmliu2002.github.io/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      信息隐藏技术_4
+    </h1>
+    <div class="post-description">
+      学习信息隐藏技术
+    </div>
+    <div class="post-meta"><span title='2024-02-26 00:00:00 +0000 UTC'>February 26, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;lxmliu2002&nbsp;|&nbsp;<a href="https://github.com/lxmliu2002/My_Blog/tree/master/content/posts/%e4%bf%a1%e6%81%af%e9%9a%90%e8%97%8f%e6%8a%80%e6%9c%af_4.md" rel="noopener noreferrer" target="_blank">Any Suggestions?</a>
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="eager" src="https://github.com/lxmliu2002/images/raw/main/homepage/home-bg-information_hiding.jpg" alt="">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%e5%9b%9b%e9%9f%b3%e9%a2%91%e4%bf%a1%e6%81%af%e9%9a%90%e8%97%8f" aria-label="四、音频信息隐藏">四、音频信息隐藏</a><ul>
+                        
+                <li>
+                    <a href="#41-%e9%9f%b3%e9%a2%91%e9%9a%90%e8%97%8f%e7%9a%84%e5%9f%ba%e6%9c%ac%e5%8e%9f%e7%90%86" aria-label="4.1 音频隐藏的基本原理">4.1 音频隐藏的基本原理</a></li>
+                <li>
+                    <a href="#42-lsb-%e9%9f%b3%e9%a2%91%e9%9a%90%e8%97%8f%e7%ae%97%e6%b3%95" aria-label="4.2 LSB 音频隐藏算法">4.2 LSB 音频隐藏算法</a></li>
+                <li>
+                    <a href="#43-%e5%9b%9e%e5%a3%b0%e9%9a%90%e8%97%8f%e7%ae%97%e6%b3%95" aria-label="4.3 回声隐藏算法">4.3 回声隐藏算法</a></li>
+                <li>
+                    <a href="#44-mp3-%e9%9f%b3%e9%a2%91%e7%9a%84%e7%bc%96%e7%a0%81%e4%b8%8e%e8%a7%a3%e7%a0%81" aria-label="4.4 MP3 音频的编码与解码">4.4 MP3 音频的编码与解码</a></li>
+                <li>
+                    <a href="#45-%e5%9f%ba%e4%ba%8e-midi-%e4%bf%a1%e6%81%af%e9%9a%90%e8%97%8f" aria-label="4.5 基于 MIDI 信息隐藏">4.5 基于 MIDI 信息隐藏</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="四音频信息隐藏">四、音频信息隐藏<a hidden class="anchor" aria-hidden="true" href="#四音频信息隐藏">#</a></h1>
+<h2 id="41-音频隐藏的基本原理">4.1 音频隐藏的基本原理<a hidden class="anchor" aria-hidden="true" href="#41-音频隐藏的基本原理">#</a></h2>
+<p>在各种载体中有很多方法可以用于隐藏信息，其中最直观的一种是替换技术。任何数字多媒体信息，在扫描和采样时，都会产生屋里随机噪声，而人的感观系统对这些随机噪声是不敏感的。替换技术就是利用这个原理，视图用秘密信息比特替换掉随机噪声，以达到隐藏秘密信息的目的。</p>
+<p>音频信号的特点：一维信号，人耳听觉系统（HAS）比人眼视觉系统（HVS）灵敏得多。</p>
+<p>对音频信息隐藏技术的要求：</p>
+<ul>
+<li>透明性</li>
+<li>鲁棒性（强鲁棒，抗模数转换）</li>
+<li>同步</li>
+<li>盲检测</li>
+</ul>
+<p>数字化音频中，低有效比特对音质贡献弱，改变低有效比特不会显著影响音质。</p>
+<h2 id="42-lsb-音频隐藏算法">4.2 LSB 音频隐藏算法<a hidden class="anchor" aria-hidden="true" href="#42-lsb-音频隐藏算法">#</a></h2>
+<p>符号规定：</p>
+<ul>
+<li>
+<p>$c_i$：载体对象的取样值</p>
+</li>
+<li>
+<p>$s_i$：伪装对象的取样值</p>
+</li>
+<li>
+<p>$L(c)$：载体的长度</p>
+</li>
+<li>
+<p>$k$：伪装密钥</p>
+</li>
+<li>
+<p>$L(m)$：秘密信息的长度</p>
+</li>
+</ul>
+<p>流载体的 LSB 方法：</p>
+<ul>
+<li>嵌入：选择一个载体元素的子集 ${j_1,j_2,&hellip;,j_{L(m)}}$ ，其中共有 $L(m)$ 个元素，用以隐藏秘密信息的  $L(m)$ 个比特。然后在这个子集上执行替换操作，把 $c_{j_i}$ 的最低比特用 $m_i$ 来替换。</li>
+<li>提取：找到嵌入信息的伪装元素的子集 ${j_1,j_2,&hellip;,j_{L(m)}}$，从这些伪装对象 $S_{j_i}$ 中抽出它们的最低比特位，排列之后组成秘密信息 $m$。</li>
+</ul>
+<p>如何选择隐藏位置子集？</p>
+<ul>
+<li>顺序选取：发送者从载体的第一个元素开始，顺序选取 $L(m)$ 个元素作为隐藏的子集
+<ul>
+<li>确定：已经嵌入部分和未嵌入部分数据特征不同</li>
+</ul>
+</li>
+<li>随机间隔：用伪装密钥 $k$ 作为 伪随机数发生器的种子，生成一个伪随机序列 $k_1,k_2,&hellip;,k_{L(m)}$，则嵌入位置为 $j_1=k_1,k_i=j_{i-1}+k_i(i\ge2)$</li>
+</ul>
+<p>LSB 算法：</p>
+<ul>
+<li>算法实现
+<ul>
+<li>嵌入：水印替换最低（或次低）比特</li>
+<li>提取：提取最低（或次低）比特组合为水印</li>
+</ul>
+</li>
+<li>算法设计
+<ul>
+<li>选择样点：样点幅值大小与其掩蔽能力有关，静音段（幅值较小）的样点不宜用于隐藏</li>
+<li>选择比特位：低比特位对音质影响小，但容易受到干扰</li>
+</ul>
+</li>
+<li>算法性能
+<ul>
+<li>透明度高</li>
+<li>容量大</li>
+<li>鲁棒性差</li>
+</ul>
+</li>
+</ul>
+<h2 id="43-回声隐藏算法">4.3 回声隐藏算法<a hidden class="anchor" aria-hidden="true" href="#43-回声隐藏算法">#</a></h2>
+<p>回声隐藏算法：</p>
+<ul>
+<li>方法：在数字声音信号中引入回声，可根据引入回声的位置不同来隐藏秘密信息</li>
+<li>原理——遮蔽效应：强信号的存在会使其附近的弱信号难以被感知。人耳对一个较强声音后的极短时间内的较弱声音的不可察觉性。当回声与原声的间隔充分接近时，人耳难以区别回声和原声。</li>
+</ul>
+<p>如何利用掩蔽效应隐藏信息？</p>
+<ul>
+<li>回声和原声间的延迟在一定范围内人耳都难以察觉，亦即可以认为添加不同延迟的回声</li>
+<li>隐藏二进制信息，只需要用两种不同延迟的回声分别代表 0、1 比特。</li>
+</ul>
+<p>回声隐藏算法：音频信号和经过回声隐藏的携密数据对人耳来说，前者就像是从耳机中听到的声音，没有回声。而后者就像是从扬声器里听到的声音，有所处空间诸如墙壁、家具等物体产生的回声。回声隐藏巧妙地利用人类听觉系统（HAS）的时域掩蔽特性，通过向音频信号中引入回声来完成隐藏秘密信息的一种技术方法。</p>
+<ul>
+<li>嵌入
+<ul>
+<li>原始信号 $f(t)$，回声信号 $f(t-\Delta t)$</li>
+<li>伪装信号为 $c(t)=f(t)+\alpha f(t-\Delta t)$，衰减为 $\alpha$</li>
+<li>秘密信息为 0，延迟为 $\Delta t$</li>
+<li>秘密信息为 1，延迟为 $\Delta t'$</li>
+<li>将信号分段，每段隐藏一比特，即可实现隐藏多个秘密信息比特</li>
+</ul>
+</li>
+<li>提取
+<ul>
+<li>同步：对每段信号求自相关函数，自相关函数峰值出现的伪位置就代表了秘密信息比特</li>
+</ul>
+</li>
+<li>生成回声信号：回声信号，可简单模拟为原始信号经过时延和幅度衰减后产生的信号
+<ul>
+<li>设原信号为 $x(t)$，时延为 $\delta$，衰减为 $\alpha$，则叠加回声的信号为 $y(t)=x(t)+\alpha x(t-\delta)$</li>
+<li>回声的数字音频信号可表示为：$y[n]=s[n]+\alpha \times s[n-\delta]$，其中，$y[n]$是加入回声后的音频信号，$s[n]$ 是原始音频信号，$\alpha$ 为回声的幅度系数，$\delta$ 为时延参数。$\alpha$ 为 0~1 之间的正数，$\delta$ 一般表示回声信号滞后与原始信号的样点间隔。</li>
+<li>由 HAS 的时域后掩蔽特性可知，对于回声时延的大小是由限制的。一般情况下，回声时延 $\delta$ 的取值一般在 50<del>200ms 之间。过小会增加嵌入信息恢复的难度，过大则会影响隐藏信号的不可感知性。同时，回声的幅度系数 $alpha$ 的取值也同样需要精心选择，其值与信号传输环境和时延取值有关，一般 $\alpha$ 取值在 0.6</del>0.9 之间。</li>
+</ul>
+</li>
+<li>具体实现方法：
+<ul>
+<li>隐藏算法
+<ul>
+<li>首先将音频采样数据文件分成包含 N 个样点的子帧，子帧的时长可以根据隐藏数据量的大小划分，一般时长从几个毫秒到几十毫秒，每个子帧隐藏一个比特的秘密信息。</li>
+<li>定义两种不同的回声时延$m_0、m_1$（其中，$m_0、m_1$ 均要求远小于子帧时长 N），分别对应秘密信号比特值为 0 和 1。</li>
+</ul>
+</li>
+<li>提取算法：回声隐藏算法的最大难点在于秘密信号的提取，其关键在于回声间距的确定。由于回升信号是载体音频信号和引入回声信号的卷积，因此在提取时，需要利用语音信号处理中的同态处理技术，利用倒谱相关测定回声间距。在进行提取时，必须要确定数据的起点并预先得到子帧的长度、时延 $m_0、m_1$ 等参数值。
+<ul>
+<li>将接收到的数据按照预定的时长划分为子帧</li>
+<li>求出各段的倒谱自相关值，比较 $m_0、m_1$ 处的自相关幅度 $F_0$ 和 $F_1$。
+<ul>
+<li>如果 $F_0$ 大于 $F_1$，则嵌入比特值为 0</li>
+<li>如果 $F_0$ 小于 $F_1$，则嵌入比特值为 1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="44-mp3-音频的编码与解码">4.4 MP3 音频的编码与解码<a hidden class="anchor" aria-hidden="true" href="#44-mp3-音频的编码与解码">#</a></h2>
+<p>MP3 编码算法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"> PCM 数据                                                    MP3 码流
+</span></span><span class="line"><span class="cl">---------&gt; 子带滤 -&gt; MDCT -&gt; 比特和比   -&gt; 哈夫曼编码 -&gt; 帧数据  --------&gt; 
+</span></span><span class="line"><span class="cl">    <span class="p">|</span>      波数组            例因子分配                 流生成
+</span></span><span class="line"><span class="cl">    <span class="p">|</span>                          ^                        ^
+</span></span><span class="line"><span class="cl">    <span class="p">|</span>                          <span class="p">|</span>                        <span class="p">|</span>
+</span></span><span class="line"><span class="cl">    <span class="p">|</span>                          <span class="p">|</span>                        <span class="p">|</span>
+</span></span><span class="line"><span class="cl">    ----------------&gt; 心理声学模型                     辅助数据
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>MP3 编码算法流程大致可以分为四部分：时频映射、心理声学模型、量化编码、帧数据流格式化。其中时频映射部分包括子带滤波器组和 MDCT（修正的离散余弦变换），量化编码包括比特和比特因子比例和哈夫曼编码。输入 PCM 音频数据是按帧进行处理的，每帧包括 1152 个 PCM 样值，而每帧又分为两个颗粒，也就是每个颗粒包含 576 个 PCM 样值。</p>
+<p>MP3 的压缩算法实质上属于有损压缩，而对于人耳来说，MP3 的压缩算法属于无损压缩。这里应用的理论基础是人耳的听觉系统的掩蔽效应。为了应用频域掩蔽效应，需对每颗粒的 576 个 PCM 样值作时频变换，首先将 PCM 样值送入子带滤波器组，经子带滤波器组均匀地分为 32 个子带信号，每个子带包含 18 个样值，然后再对各子带作 MDCT 变换，从而得到 576 个等间隔的频域样值。</p>
+<p>经时频变换后得到的左右声道频域样值需根据所要求的模式进行声道模式处理，MP3 标准提供了五种声道模型：</p>
+<ul>
+<li>单声道模型：只有一个声道的模式</li>
+<li>双声道模型：具有两个相互独立声道的模型</li>
+<li>立体声模式：具有两个声道且两个声道之间有一定关联的模式</li>
+<li>强度立体声模式：在立体声模式的基础上，对某些比例因子带的样值，仅对左右声道之和以及子带能量进行编码以获取更高的压缩率</li>
+<li>和差立体声模式：对左右声道频域样值的和值及差值分别进行编码的立体声模式</li>
+</ul>
+<p>频域样值经模式处理后，就进行量化和编码。所采用的是非均匀量化，量化过程处于两重迭代循环中，而且每循环一次都要对每个频域样值执行一次量化，计算量较大，对量化的结果进行哈夫曼编码，这样会增加算法的复杂度，但可以利用信号的统计hi特性提高压缩率。这也是 MP3 压缩算法的层 Ⅲ 与层 Ⅱ 的主要区别之一。</p>
+<p>量化是在心理声学模型的控制下进行的，原始 PCM 音频数据分为两路，一路进入子带滤波器组，另一路进入心理声学模型。心理声学模型是对掩蔽效应的具体应用：首先对 PCM 样值做 1024 点 FFT 运算，然后对音频数据的频域特性进行分析，依据已预先建立起来的统计模型数据求出各个比例因子带的信号掩蔽比，并以此指导频域样值的量化，使得量化噪声尽可能地分配在不易被觉察的频带。</p>
+<p>最后一步是帧数据流格式化，把比特流打包形成 MP3 码流。也就是按照 MP3 标准所规定的码流格式，把帧头、纠错码、边信息、主数据、附加数据等有关信息组合成适合于解码的帧。</p>
+<p>MP3 解码算法：</p>
+<blockquote>
+<p>解码是编码的逆过程</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">                                                                       PCM 信号重建
+</span></span><span class="line"><span class="cl">     标准比特流输入                                                       数字音频信号 
+</span></span><span class="line"><span class="cl">开始 ------------&gt; 比特流按帧 -&gt; 哈夫曼解码 -&gt; 频增值的 -&gt; MDCT -&gt; 合成滤波器 -----------&gt; 结束
+</span></span><span class="line"><span class="cl">                   解位并延迟                逆量化     逆变换
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>首先查到每一帧头信息中的同步码，使数据流能够同步，同时分析头信息，得出采样率、比特率及声音模式等消息。</li>
+<li>读取该帧的边信息，解出解码所需的各辅助参数（即哈夫曼码本的选择信息、比特分配信息等），并存储下来</li>
+<li>根据边信息中 main-data-end 参数找到该帧的主数据的位置（某一帧的主数据不一定紧跟在该帧边信息之后），由主数据解得缩放因子数据和哈夫曼码字</li>
+<li>根据边信息中哈夫曼码本的选择信息解出频域量化样值；最后通过逆量化、混叠处理、IMDCT 和合成滤波器重建数字音频信号</li>
+</ul>
+<p>分类：</p>
+<ul>
+<li>压缩编码前嵌入</li>
+<li>压缩编码中嵌入</li>
+<li>压缩编码后嵌入</li>
+</ul>
+<h2 id="45-基于-midi-信息隐藏">4.5 基于 MIDI 信息隐藏<a hidden class="anchor" aria-hidden="true" href="#45-基于-midi-信息隐藏">#</a></h2>
+<p>MIDI 是乐器数字接口，也是一种专用于乐器的接口标准。一个标准 MIDI 文件基本上是由头块和音轨块两部分组成：</p>
+<ul>
+<li>
+<p>头块：用来描述整个 MDI 文件基本信息</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">标识符串（4 字节）</th>
+          <th style="text-align: center">MThd</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">头块数据区长度（4 字节）</td>
+          <td style="text-align: center">00 00 00 06</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">头块数据区（6 字节）</td>
+          <td style="text-align: center">ff ff nn nn dd dd</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+<li>
+<p>音轨块：包含一系列由 MIDI 消息构成的 MIDI 数据流</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">标识符串（4 字节）</th>
+          <th style="text-align: center">MTrk</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">音轨块数据区长度（4 字节）</td>
+          <td style="text-align: center">单位位字节</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">音轨块数据区（6 字节）</td>
+          <td style="text-align: center">由多个 MIDI 事件构成</td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li>每一个 MIDI 事件的构成：MIDI 事件 = &lt;delta time&gt;&lt;MIDI 消息&gt;
+<ul>
+<li>&lt;delta time&gt; 采用可变长编码，决定 MIDI 消息被执行的时间</li>
+<li>一个 MIDI 消息是由一个状态字节及多个数据字节构成，分为通道消息、系统消息
+<ul>
+<li>通道消息：对单一的 MIDI Channel 起作用，其 Channel 是利用状态字节的低 4 位来表示，可从 0 到 15 共有 16 个 Channel。通道消息分为声音消息和模式消息
+<ul>
+<li>声音消息用于控制合成器的声音产生</li>
+<li>模式消息则为最多达 16 条通道分配声音关系，包括设定单音模式或复音模式</li>
+</ul>
+</li>
+<li>系统消息：应用于整个系统而不是特定通道，并且不含有任何通道码。
+<ul>
+<li>公共消息：提供选择歌曲、用拍子数来设定歌曲位置指针，及想合成器发出旋律请求的功能</li>
+<li>实时消息：设定系统的实时参数，包括时钟、启动、停止定序器、从停止位置恢复定序器和系统复位</li>
+<li>专用消息：包含了厂商特定的数据，如标识、系列号、模型号及其他消息</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>MIDI 数字水印算法原理：MIDI 文件的声音消息</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">声音消息</th>
+          <th style="text-align: center">功能描述</th>
+          <th style="text-align: center">数字字节描述</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">80-8F</td>
+          <td style="text-align: center">声音关闭</td>
+          <td style="text-align: center">1 字节：音符号；2 字节：音速</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">90-9F</td>
+          <td style="text-align: center">声音开启</td>
+          <td style="text-align: center">1 字节：音符号；2 字节：音速</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">A0-AF</td>
+          <td style="text-align: center">音键压力</td>
+          <td style="text-align: center">1 字节：音符号；2 字节：键压力</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">B0-BF</td>
+          <td style="text-align: center">控制变化</td>
+          <td style="text-align: center">1 字节：控制器号（0-121）；2 字节：控制值</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">C0-CF</td>
+          <td style="text-align: center">改变乐器</td>
+          <td style="text-align: center">1 字节：乐器编号</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">D0-DF</td>
+          <td style="text-align: center">通道触动压力</td>
+          <td style="text-align: center">1 字节：压力</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">E0-EF</td>
+          <td style="text-align: center">音调轮变化</td>
+          <td style="text-align: center">1 字节：弯音轮变换值的低字节；2 字节：弯音轮变换值的高字节</td>
+      </tr>
+  </tbody>
+</table>
+<p>改变 MIDI 音乐文件的部分声音消息并不影响 MIDI 文件的听觉效果，改变<strong>声音开启的最低位比特、乐器编号的最低位比特、通道触动压力的低 4 比特位</strong>都不会引起听觉差异，因为可在这三种声音消息中嵌入水印消息。</p>
+<p>拓展频谱技术：信号在大于所需的带宽内进行传输，数据的带宽扩展时通过一个与数据独立的码字完成的，并且在接收端需要该码字的一个同步接收，以进行解扩和数据恢复。</p>
+<p>扩频信号的特点是，信号占据很宽的频带，在每一个频段上的信号能量很低，尽管整个信号的能量可以很高。即使部分信号在几个频段丢失，其他频段仍有足够的信息可以用来恢复信号。而利用不同的、相互正交的扩频码，可以在一个很宽的频带内同时传输很多路信号，它们之间互相正交，不会产生干扰。而且每个频段的信号能量很低，信噪比很小，可以认为是淹没在信道噪声中的。因此这种通信技术的又是是拦截概率小，抗干扰能力强，检测和删除一个扩频信号是很困难的。</p>
+<p>扩频信号的概念可以应用到伪装通信系统中来，伪装系统就是试图将秘密信息扩展在整个载体中，以达到不可察觉的目的，并且删除一小部分载体，也很难删除整个信息。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://lxmliu2002.github.io/tags/ctf/">CTF</a></li>
+      <li><a href="https://lxmliu2002.github.io/tags/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF/">信息隐藏技术</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_5/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>信息隐藏技术_5</span>
+  </a>
+  <a class="next" href="https://lxmliu2002.github.io/posts/%E4%BF%A1%E6%81%AF%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF_3/">
+    <span class="title">Next »</span>
+    <br>
+    <span>信息隐藏技术_3</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 信息隐藏技术_4 on x"
+            href="https://x.com/intent/tweet/?text=%e4%bf%a1%e6%81%af%e9%9a%90%e8%97%8f%e6%8a%80%e6%9c%af_4&amp;url=https%3a%2f%2flxmliu2002.github.io%2fposts%2f%25E4%25BF%25A1%25E6%2581%25AF%25E9%259A%2590%25E8%2597%258F%25E6%258A%2580%25E6%259C%25AF_4%2f&amp;hashtags=CTF%2c%e4%bf%a1%e6%81%af%e9%9a%90%e8%97%8f%e6%8a%80%e6%9c%af">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 信息隐藏技术_4 on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2flxmliu2002.github.io%2fposts%2f%25E4%25BF%25A1%25E6%2581%25AF%25E9%259A%2590%25E8%2597%258F%25E6%258A%2580%25E6%259C%25AF_4%2f&amp;title=%e4%bf%a1%e6%81%af%e9%9a%90%e8%97%8f%e6%8a%80%e6%9c%af_4&amp;summary=%e4%bf%a1%e6%81%af%e9%9a%90%e8%97%8f%e6%8a%80%e6%9c%af_4&amp;source=https%3a%2f%2flxmliu2002.github.io%2fposts%2f%25E4%25BF%25A1%25E6%2581%25AF%25E9%259A%2590%25E8%2597%258F%25E6%258A%2580%25E6%259C%25AF_4%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 信息隐藏技术_4 on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2flxmliu2002.github.io%2fposts%2f%25E4%25BF%25A1%25E6%2581%25AF%25E9%259A%2590%25E8%2597%258F%25E6%258A%2580%25E6%259C%25AF_4%2f&title=%e4%bf%a1%e6%81%af%e9%9a%90%e8%97%8f%e6%8a%80%e6%9c%af_4">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 信息隐藏技术_4 on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flxmliu2002.github.io%2fposts%2f%25E4%25BF%25A1%25E6%2581%25AF%25E9%259A%2590%25E8%2597%258F%25E6%258A%2580%25E6%259C%25AF_4%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 信息隐藏技术_4 on whatsapp"
+            href="https://api.whatsapp.com/send?text=%e4%bf%a1%e6%81%af%e9%9a%90%e8%97%8f%e6%8a%80%e6%9c%af_4%20-%20https%3a%2f%2flxmliu2002.github.io%2fposts%2f%25E4%25BF%25A1%25E6%2581%25AF%25E9%259A%2590%25E8%2597%258F%25E6%258A%2580%25E6%259C%25AF_4%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 信息隐藏技术_4 on telegram"
+            href="https://telegram.me/share/url?text=%e4%bf%a1%e6%81%af%e9%9a%90%e8%97%8f%e6%8a%80%e6%9c%af_4&amp;url=https%3a%2f%2flxmliu2002.github.io%2fposts%2f%25E4%25BF%25A1%25E6%2581%25AF%25E9%259A%2590%25E8%2597%258F%25E6%258A%2580%25E6%259C%25AF_4%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 信息隐藏技术_4 on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=%e4%bf%a1%e6%81%af%e9%9a%90%e8%97%8f%e6%8a%80%e6%9c%af_4&u=https%3a%2f%2flxmliu2002.github.io%2fposts%2f%25E4%25BF%25A1%25E6%2581%25AF%25E9%259A%2590%25E8%2597%258F%25E6%258A%2580%25E6%259C%25AF_4%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>© <a href="https://github.com/lxmliu2002">lxmliu2002</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
